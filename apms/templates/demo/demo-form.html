@@ -1,0 +1,42 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+    <form action="" method="post">
+       {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <a style="color: #412885" href="{% url 'demo:demo-list' %}"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Name" name="name" value="{{ object.name }}">
+                </div>
+
+                 <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" aria-describedby="age" placeholder="age" name="age" value="{{ object.age }}">
+                </div>
+
+
+            </div>
+
+        </div>
+    </form>
+
+
+
+
+{% endblock %}
