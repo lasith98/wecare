@@ -9,13 +9,19 @@
         <div class="sidebar">
             <img src="{% static 'img/tokoIG.jpg' %}" alt="logo" width="200" height="70" style="margin-bottom: 10px">
             <ul>
-                <li><a href=""><i class="fas fa-braille"></i>Dashboard</a></li>
-                <li><a href="{% url 'demo:demo-list' %}"><i class="fas fa-clone"></i>Demo</a></li>
-                <li><a href=""><i class="fas fa-dollar-sign"></i>Revenue</a></li>
-                <li><a href=""><i class="fas fa-file-invoice-dollar"></i>Expenses</a></li>
-                <li><a href=""><i class="fas fa-users"></i>Team</a></li>
-                <li><a href=""><i class="fas fa-running"></i>Target</a></li>
-                <li><a href=""><i class="fas fa-sign-out-alt"></i>Log out</a></li>
+                <li><a href="{% url 'mark_attendance_manual:ams_admin_attendance_create' %}"><i class="fas fa-fingerprint"></i>Mark Attendance </a></li>
+                <li><a href="{% url 'mark_attendance_manual:ams_admin_attendance_List' %}"><i class="fas fa-file-signature"></i>Attendance Report</a></li>
+                <li><a href="{% url 'ams_client_leave_request:ams_client_leave_request-List' %}"><i class="fas fa-running"></i></i>Leave Interface</a></li>
+                <li><a href="{% url 'ams_client_leave_request:ams_client_leave_request-create' %}"><i class="fas fa-calendar-plus"></i>Apply a Leave</a></li>
+            <!--    <li><a href=""><i class="fas fa-chart-pie"></i>Attendnce Tracker</a></li>
+
+                <li><a href=""><i class="fas fa-receipt"></i>Payment Reciept</a></li>
+                <li><a href=""><i class="fas fa-file-invoice-dollar"></i>Payment Report</a></li>  -->
+                <li><a href="{% url 'pms_allowances:allowance-List' %}"><i class="fas fa-arrow-alt-circle-up"></i>Allowance Table</a></li>
+                <li><a href="{% url 'pms_deductions:deduction-List' %}"><i class="fas fa-arrow-alt-circle-down"></i>Deduction Table</a></li>
+                <li><a href=""><i class="fas fa-chart-line"></i>Payment Tracker</a></li>
+
+
             </ul>
 
         </div>

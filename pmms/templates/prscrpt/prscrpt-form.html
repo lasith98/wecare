@@ -1,0 +1,51 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+<form action="" method="post" id="form1">
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <a style="color: #412885" href="{% url 'prscrpt:prscrpt-list' %}"><i class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="col">
+                    <div class="d-flex align-items-end justify-content-end">
+                        <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i class="fas fa-save"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card-body">
+            <div class="form-group">
+                <label for="medName">Medicine Name</label>
+                <input type="text" class="form-control" id="medName" aria-describedby="medName" placeholder="Medicine Name" name="medName"
+                    value="{{ object.medName }}">
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="date" aria-describedby="date"
+                    placeholder="Date" name="date" value="{{ object.date }}">
+            </div>
+            <div class="form-group">
+                <label for="time">Time</label>
+                <input type="time" class="form-control" id="time" aria-describedby="time"
+                    placeholder="Time" name="time" value="{{ object.time }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" aria-describedby="description"
+                    placeholder="description" name="description" value="{{ object.description }}">
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+{% endblock %}

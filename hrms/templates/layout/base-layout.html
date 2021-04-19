@@ -6,7 +6,9 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>We Care</title>
+
+    <title> {% block title %} {% endblock %} | We Care</title>
+
     <link rel="shortcut icon" href="{% static 'img/favicon/favicon.ico' %}"/>
  <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet"/>
@@ -19,6 +21,7 @@
           integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}">
 
 
     {% block head %} {% endblock %}
@@ -42,6 +45,11 @@
 {% block model %} {% endblock %}
 
 <script src="{% static 'js/script.js' %}"></script>
+<!--table filter-->
+<script src="{% static 'js/TableFilter.min.js' %}"></script>
+<script src="{% static 'js/table-sort.js' %}"></script>
+<script src="{% static 'js/saveAsExcel.js' %}"></script>
+
 {% block script %} {% endblock %}
 
 </body>

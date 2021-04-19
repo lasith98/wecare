@@ -1,0 +1,83 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Room List
+{% endblock title %}
+
+{% block content %}
+
+        <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Room List</h5>
+            <hr>
+
+            <div class="container pl-5 pr-5 enroll_form_padding" >
+
+                <div class="container mt-4 mb-4">
+                    <div class="row">
+                        <div class="col-sm">
+                            <input class="form-control" type="text"  placeholder="Filter By Name " id="filter0">
+                        </div>
+                        <div class="col-sm">
+                            <input type="hidden" id="filter1"><!--dont remove js file crash -->
+                            <input class="form-control" type="text" placeholder="Filter By Location" id="filter2">
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-sm" id="filter">
+
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Room Id</th>
+                            <th scope="col">Room Name</th>
+                            <th scope="col">Room Size</th>
+                            <th scope="col">Room Location</th>
+                            <th scope="col">Create Date</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% if room_list %}
+
+                            {% for room in room_list %}
+
+                                <tr>
+                                    <th scope="row">{{ room.id }}</th>
+                                    <td>{{ room.r_name }}</td>
+                                    <td>{{ room.r_size }}</td>
+                                    <td>{{ room.r_location }}</td>
+                                    <td>{{ room.r_created_at }}</td>
+                                    <td>
+                                        <!--action links-->
+                                        <form action="{% url 'room_management_system:rms_update_room' %}" style="float: left" class="pr-3" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="r_name" value="{{ room.r_name }}">
+                                            <button type="submit" name="search_room_by_name" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
+                                        </form>
+
+                                        <form action="{% url 'room_management_system:rms_delete_room' %}" style="float: left" class="pr-3" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="r_name" value="{{ room.r_name }}">
+                                            <button type="submit" name="search_room_by_name" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

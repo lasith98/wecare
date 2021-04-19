@@ -1,0 +1,194 @@
+{% extends 'layout/dashboard-layout.html' %}+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    View Shifts
+{% endblock title %}
+
+{% block content %}
+    <!--message window-->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <!--message window-->
+
+    <div id="browser_id">
+        <!-- browser version-->
+
+    </div>
+
+
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+
+
+                <form action="" method="post">
+                    <div class="row">
+
+                        <div class="col-sm">
+                            <input class="form-control" type="month" name="month" placeholder="Input Year" required aria-label="default input example">
+                        </div>
+
+                        <div class="col-sm">
+
+                        </div>
+
+                        <div class="col-sm">
+                            {% csrf_token %}
+                            <button type="submit" class="btn w-100 btn-outline-info" name="search_by_month">Monthly shift report <i class="fab fa-searchengin"></i></button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-body">
+
+                <form action="" method="post">
+                    <div class="row">
+
+                        <div class="col-sm">
+                            <input class="form-control" name="month" type="month" placeholder="Input Year" required aria-label="default input example">
+                        </div>
+
+                        <div class="col-sm">
+
+                            <input class="form-control" name="email" list="datalistOptions" required id="exampleDataList" placeholder="Employee Email">
+                            <datalist id="datalistOptions">
+
+                                {% if employee_list %}
+
+                                    {% for emp in employee_list %}
+                                        <option value="{{ emp.emp_email}}">{{ emp.emp_f_name }} {{ emp.emp_s_name }} {{ emp.id }}</option>
+                                    {% endfor %}
+
+                                {% endif %}
+                            </datalist>
+
+                        </div>
+
+                        <div class="col-sm">
+                            {% csrf_token %}
+                            <button type="submit" name="search_by_emp" class="btn w-100 btn-outline-info">Employee Shift Report <i class="fab fa-searchengin"></i></button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+        </div>
+    </div>
+
+    {% if shifts %}
+
+        <!-- popup window -->
+        <div class="card sticky mt-3">
+            <div class="card-body">
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-sm">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="conform_delete" class="btn btn-outline-danger w-100">Delete This Shift <i class="fas fa-trash-alt"></i> </button>
+                            </form>
+                        </div>
+
+                        <div class="col-sm">
+                            <button type="button" onclick="download()" class="btn btn-outline-info w-100">Download As CSV <i class="fas fa-print"></i></button>
+                        </div>
+
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-outline-warning w-100" onclick="topFunction()">Go to TOP <i class="fas fa-level-up-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-body">
+                <table class="table table-sm table-sort" id="print_table_shift">
+
+                    <thead>
+                    <tr>
+                        <th scope="col">Year</th>
+                        <th scope="col">Month</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Start</th>
+                        <th scope="col">End</th>
+                    </tr>
+                    </thead>
+
+                    <!--Nursing officers Shifts-->
+                    <tbody >
+
+                    {% for shift in shifts %}
+
+                        <tr>
+                            <th scope="row">{{ shift.s_year }}</th>
+                            <td>{{ shift.s_month }}</td>
+                            <td>{{ shift.s_date }}</td>
+                            <td>{{ shift.s_employee_shift.emp_f_name }} {{ shift.s_employee_shift.emp_s_name }}</td>
+                            <td>{{ shift.s_employee_shift.id}}</td>
+                            <td>{{ shift.s_start}}</td>
+                            <td>{{ shift.s_end}}</td>
+                        </tr>
+
+                    {% endfor %}
+
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    {% endif %}
+
+
+
+    <script>
+        var isChrome = false;
+        if (window.chrome && !window.opr){
+            isChrome = true;
+        }
+        if(!isChrome){
+            var windwo = document.getElementById('browser_id');
+            var message = "<div class=\"alert alert-warning\" role=\"alert\">\n" +
+                "<i class=\"fas fa-radiation-alt\"></i>  Please use google chrome to get full experience\n" +
+                "</div>"
+            windwo.innerHTML = message;
+        }
+    </script>
+
+    <script>
+        function topFunction() {
+          document.body.scrollTop = 0; // For Safari
+          document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+
+
+
+{% endblock %}
