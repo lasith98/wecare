@@ -1,0 +1,104 @@
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+.enroll_form_padding{
+    padding: 0 8em !important;
+}
+
+.enroll_form_button_pannel{
+    display: flex;
+    justify-content: space-around;
+}
+
+.type-class{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.lite_icon{
+    color: #bdb8d7;
+}
+.lite_icon:hover{
+    color: white;
+}
+.dark-drop-down a{
+    color: black !important;
+}
+
+.side_bar_card{
+    background:transparent !important;
+}
+
+.side_bar_card button{
+    color: white !important;
+    text-decoration: none;
+}
+
+.outer_block{
+    display: flex;
+    justify-content: space-around;
+}
+
+.width-d-5{
+    max-width: 19.8%;
+    min-width: 19.8%;
+    border: 1px solid #d9534f ;
+    color: #d9534f;
+}
+
+.checkbox_color{
+    border: 1px solid #5cb85c !important;
+    color: #5cb85c !important;
+}
+
+.arrow_bg_blue{
+    color: #5bc0de !important; ;
+}
+
+.arrow_bg_red{
+    color: #d9534f !important;
+}
+
+.display-none{
+    display: none !important;
+}
+
+.left:hover , .right:hover {
+    cursor: pointer !important;
+    color: black !important;
+}
+
+.back-ground-table{
+    background-color: #bdb8d7 !important;
+}
+
+.back-ground-table1{
+    background-color: #d9ffb3 !important;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+    z-index: 1500;
+  top: 0;
+}
+
+.dashboard-icon{
+    font-size: 2.5em !important;
+    color: #ac678f !important;
+}
+
+.dashboard-number{
+    font-size: 4em !important;
+    font-weight: bold;
+    font-family: Helvetica;
+}
+
+.card-t{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+

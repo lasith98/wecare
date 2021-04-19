@@ -1,0 +1,193 @@
+{% extends 'layout/dashboard-layout.html' %}+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Generates Next Month Shift
+{% endblock title %}
+
+{% block content %}
+    <!--message window-->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <!--message window-->
+
+    <div id="browser_id">
+        <!-- browser version-->
+
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Generates Next Month WorkShift</h5>
+                <div class="container">
+                    <form action="" method="post">
+
+                        <div class="row">
+
+                            <div class="col-sm">
+                                <input class="form-control" type="month" placeholder="input Month" aria-label="default input example" name="month">
+                            </div>
+
+
+                            <div class="col-sm">
+                                {% csrf_token %}
+                                <button type="submit" class="btn w-100 btn-outline-success" name="generate">Generate <i class="fas fa-calendar-plus"></i></button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+        </div>
+    </div>
+    
+    {% if nursing %}
+
+        <!-- popup window -->
+        <div class="card sticky mt-3">
+            <div class="card-body">
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-sm">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <button type="submit"  name="conform_save" class="btn btn-outline-primary w-100">Save Shifts <i class="far fa-save"></i> </button>
+                            </form>
+                        </div>
+
+                        <div class="col-sm">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-info w-100" name="conform_save" onclick="download()">Save And print <i class="fas fa-print"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-outline-warning w-100" onclick="topFunction()">Go to TOP <i class="fas fa-level-up-alt"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="card mt-3">
+            <div class="card-body">
+
+                <table class="table table-sm table-sort" id="print_table_shift">
+
+                    <thead>
+                    <tr>
+                        <th scope="col">Year</th>
+                        <th scope="col">Month</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Start</th>
+                        <th scope="col">End</th>
+                    </tr>
+                    </thead>
+
+                    <!--Nursing officers Shifts-->
+                    <tbody >
+
+                    {% for nurse in nursing %}
+
+                        <tr>
+                            <th scope="row">{{ nurse.s_year }}</th>
+                            <td>{{ nurse.s_month }}</td>
+                            <td>{{ nurse.s_date }}</td>
+                            <td>{{ nurse.s_employee_shift.emp_f_name }} {{ nurse.s_employee_shift.emp_s_name }}</td>
+                            <td>{{ nurse.s_employee_shift.id}}</td>
+                            <td>{{ nurse.s_start}}</td>
+                            <td>{{ nurse.s_end}}</td>
+                        </tr>
+
+                    {% endfor %}
+
+
+                    </tbody>
+
+                    <!--H_prof Shifts-->
+                    <tbody class="back-ground-table">
+
+                        {% for prof in h_prof %}
+
+                            <tr>
+                                <th scope="row">{{ prof.s_year }}</th>
+                                <td>{{ prof.s_month }}</td>
+                                <td>{{ prof.s_date }}</td>
+                                <td>{{ prof.s_employee_shift.emp_f_name }} {{ prof.s_employee_shift.emp_s_name }}</td>
+                                <td>{{ prof.s_employee_shift.id}}</td>
+                                <td>{{ prof.s_start}}</td>
+                                <td>{{ prof.s_end}}</td>
+                            </tr>
+
+                        {% endfor %}
+                        
+                    </tbody>
+
+                    <!--Management Staff-->
+                    <tbody class="back-ground-table1">
+
+                        {% for staff in manage_staff %}
+
+                            <tr>
+                                <th scope="row">{{ staff.s_year }}</th>
+                                <td>{{ staff.s_month }}</td>
+                                <td>{{ staff.s_date }}</td>
+                                <td>{{ staff.s_employee_shift.emp_f_name }} {{ staff.s_employee_shift.emp_s_name }}</td>
+                                <td>{{ staff.s_employee_shift.id}}</td>
+                                <td>{{ staff.s_start}}</td>
+                                <td>{{ staff.s_end}}</td>
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+        </div>
+
+    {% endif %}
+
+
+    <script>
+        var isChrome = false;
+        if (window.chrome && !window.opr){
+            isChrome = true;
+        }
+        if(!isChrome){
+            var windwo = document.getElementById('browser_id');
+            var message = "<div class=\"alert alert-warning\" role=\"alert\">\n" +
+                "<i class=\"fas fa-radiation-alt\"></i>  Please use google chrome to get full experience\n" +
+                "</div>"
+            windwo.innerHTML = message;
+        }
+    </script>
+
+    <script>
+        function topFunction() {
+          document.body.scrollTop = 0; // For Safari
+          document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+
+
+{% endblock %}
