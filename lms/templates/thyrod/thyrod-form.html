@@ -1,0 +1,245 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+<form action="" method="post" id="form1">
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <a style="color: #412885" href="{% url 'thyrod:thyrod-list' %}"><i
+                            class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="col">
+                    <div class="d-flex align-items-end justify-content-end">
+                        <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i
+                                class="fas fa-save"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="pid">Patient ID</label>
+                    <input type="text" class="form-control" id="pid" aria-describedby="pid" placeholder="pid" name="pid"
+                        readonly>
+                </div>
+                <div class=" form-group col-md-6">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" aria-describedby="age" placeholder="age"
+                        name="age" value="{{ object.age }}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="pName">Patient Name</label>
+                    <input type="text" class="form-control" id="pName" aria-describedby="pName" placeholder="Patient Name"
+                        name="pName" readonly>
+                </div>
+                <div class=" form-group col-md-6">
+                    <label for="date">Date</label>
+                    <input type="date" class="form-control" id="date" aria-describedby="date" placeholder="date"
+                        name="date" value="{{ object.date }}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="sDate">Sample Date</label>
+                    <input type="text" class="form-control" id="pNasDateme" aria-describedby="sDate" placeholder="Sample Date"
+                        name="sDate" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="tstBox11">Test 1</label>
+                        <select class="form-control" name="tstBox11" id="tstBox11" onchange="test1(event)">
+                            <option value="LSH">LSH</option>
+                            <option value="TSH">TSH</option>
+                            <option value="T3.Total">T3.Total</option>
+                            <option value="T4.Total">T4.Total</option>
+                        </select>
+
+                        <input type="hidden" class="form-control" id="tstBox1" aria-describedby="tstBox1"
+                             name="tstBox1" value="{{ object.tstBox1 }}">
+                    </div>
+                </div>
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="resultBox1">Result 1</label>
+                        <input type="text" class="form-control" id="resultBox1" aria-describedby="resultBox1"
+                             name="resultBox1" value="{{ object.resultBox1 }}">
+                    </div>
+                </div>
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="normalBox1">Normal 1</label>
+                        <input type="text" class="form-control" id="normalBox1" aria-describedby="normalBox1"
+                             name="normalBox1" value="{{ object.normalBox1 }}">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="tstBox21">Test 2</label>
+                        <select class="form-control" name="tstBox21" id="tstBox21" onchange="test2(event)">
+                            <option value="LSH">LSH</option>
+                            <option value="TSH">TSH</option>
+                            <option value="T3.Total">T3.Total</option>
+                            <option value="T4.Total">T4.Total</option>
+                        </select>
+
+                        <input type="hidden" class="form-control" id="tstBox2" aria-describedby="tstBox2"
+                            name="tstBox2" value="{{ object.tstBox2 }}">
+                    </div>
+                </div>
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="resultBox2">Result 2</label>
+                        <input type="text" class="form-control" id="resultBox2" aria-describedby="resultBox2"
+                             name="resultBox2" value="{{ object.resultBox2 }}">
+                    </div>
+                </div>
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="normalBox2">Normal 2</label>
+                        <input type="text" class="form-control" id="normalBox2" aria-describedby="normalBox2"
+                             name="normalBox2" value="{{ object.normalBox2 }}">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="tstBox31">Test 3</label>
+                        <select class="form-control" name="tstBox31" id="tstBox31" onchange="test3(event)">
+                            <option value="LSH">LSH</option>
+                            <option value="TSH">TSH</option>
+                            <option value="T3.Total">T3.Total</option>
+                            <option value="T4.Total">T4.Total</option>
+                        </select>
+
+                        <input type="hidden" class="form-control" id="tstBox3" aria-describedby="tstBox3"
+                            name="tstBox3" value="{{ object.tstBox3 }}">
+                    </div>
+                </div>
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="resultBox3">Result 3</label>
+                        <input type="text" class="form-control" id="resultBox3" aria-describedby="resultBox3"
+                             name="resultBox3" value="{{ object.resultBox3 }}">
+                    </div>
+                </div>
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="normalBox3">Normal 3</label>
+                        <input type="text" class="form-control" id="normalBox3" aria-describedby="normalBox3"
+                             name="normalBox3" value="{{ object.normalBox3 }}">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="tstBox41">Test 4</label>
+                        <select class="form-control" name="tstBox41" id="tstBox41" onchange="test4(event)">
+                            <option value="LSH">LSH</option>
+                            <option value="TSH">TSH</option>
+                            <option value="T3.Total">T3.Total</option>
+                            <option value="T4.Total">T4.Total</option>
+                        </select>
+
+                        <input type="hidden" class="form-control" id="tstBox4" aria-describedby="tstBox4"
+                            name="tstBox4" value="{{ object.tstBox4 }}">
+                    </div>
+                </div>
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="resultBox4">Result 4</label>
+                        <input type="text" class="form-control" id="resultBox4" aria-describedby="resultBox4"
+                             name="resultBox4" value="{{ object.resultBox4 }}">
+                    </div>
+                </div>
+                <div class="form-row col-md-4">
+                    <div class="form-group">
+                        <label for="normalBox4">Normal 4</label>
+                        <input type="text" class="form-control" id="normalBox4" aria-describedby="normalBox4"
+                             name="normalBox4" value="{{ object.normalBox4 }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    function test1(e) {
+        document.getElementById("tstBox1").value = e.target.value
+        var val = e.target.value
+        if (val == "LSH") {
+            document.getElementById("normalBox1").value = "40% - 80%";
+        } else if (val == "TSH") {
+            document.getElementById("normalBox1").value = "20% - 40%";
+        } else if (val == "T3.Total") {
+            document.getElementById("normalBox1").value = "2% - 10%";
+        } else if (val == "T4.Total") {
+            document.getElementById("normalBox1").value = "1% - 6%";
+        }
+
+    }
+    function test2(e) {
+        document.getElementById("tstBox2").value = e.target.value
+        var val = e.target.value
+        if (val == "LSH") {
+            document.getElementById("normalBox2").value = "40% - 80%";
+        } else if (val == "TSH") {
+            document.getElementById("normalBox2").value = "20% - 40%";
+        } else if (val == "T3.Total") {
+            document.getElementById("normalBox2").value = "2% - 10%";
+        } else if (val == "T4.Total") {
+            document.getElementById("normalBox2").value = "1% - 6%";
+        }
+
+    }
+    function test3(e) {
+        document.getElementById("tstBox3").value = e.target.value
+        var val = e.target.value
+        if (val == "LSH") {
+            document.getElementById("normalBox3").value = "40% - 80%";
+        } else if (val == "TSH") {
+            document.getElementById("normalBox3").value = "20% - 40%";
+        } else if (val == "T3.Total") {
+            document.getElementById("normalBox3").value = "2% - 10%";
+        } else if (val == "T4.Total") {
+            document.getElementById("normalBox3").value = "1% - 6%";
+        }
+
+    }
+    function test4(e) {
+        document.getElementById("tstBox4").value = e.target.value
+        var val = e.target.value
+        if (val == "LSH") {
+            document.getElementById("normalBox4").value = "40% - 80%";
+        } else if (val == "TSH") {
+            document.getElementById("normalBox4").value = "20% - 40%";
+        } else if (val == "T3.Total") {
+            document.getElementById("normalBox4").value = "2% - 10%";
+        } else if (val == "T4.Total") {
+            document.getElementById("normalBox4").value = "1% - 6%";
+        }
+
+    }
+</script>
+
+
+
+
+{% endblock %}

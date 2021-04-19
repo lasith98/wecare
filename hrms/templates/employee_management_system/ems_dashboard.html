@@ -1,0 +1,151 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block title %}
+    DashBoard EMS
+{% endblock %}
+
+{% block content %}
+
+    <div class="alert alert-primary" role="alert">
+      EMS Dash Board
+    </div>
+
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+
+            <!--col-->
+            <div class="col mt-2">
+                <div class="card">
+                    <div class="card-body">
+
+                        <center>
+                            <i class="fas fa-user-md dashboard-icon"></i> <br>
+                            <span>Total Doctor Count</span>
+                        </center>
+
+                        <center>
+                            <span class="dashboard-number">{{ doctor_count }}</span>
+                        </center>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--col-->
+            <div class="col mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <center>
+                            <i class="fas fa-user-nurse dashboard-icon"></i> <br>
+                            <span>Total Nursing Officer Count</span>
+                        </center>
+
+                        <center>
+                            <span class="dashboard-number">{{ nurse_count }}</span>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <!--col-->
+            <div class="col mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <center>
+                            <i class="fas fa-notes-medical dashboard-icon"></i> <br>
+                            <span>Total Health Professional Count</span>
+                        </center>
+
+                        <center>
+                            <span class="dashboard-number">{{ health_prof }}</span>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <!--col-->
+            <div class="col mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <center>
+                            <i class="fas fa-users dashboard-icon"></i> <br>
+                            <span>Total Management Staff Count</span>
+                        </center>
+
+                        <center>
+                            <span class="dashboard-number">{{ management_staff }}</span>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <!--col-->
+            <div class="col mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <center>
+                            <i class="fas fa-hospital dashboard-icon"></i> <br>
+                            <span>Total Room Count</span>
+                        </center>
+
+                        <center>
+                            <span class="dashboard-number">{{ rooms }}</span>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <!--col-->
+            <div class="col mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <center>
+                            <i class="fas fa-thumbtack dashboard-icon"></i> <br>
+                            <span>Allocated Nursing Officers</span>
+                        </center>
+
+                        <center>
+                            <span class="dashboard-number">{{ allocated_nurse }}</span>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <!--col-->
+            <div class="col mt-2">
+                <div class="card">
+                    <div class="card-body">
+                        <center>
+                            <i class="fas fa-map-pin dashboard-icon" style="color: #d9534f !important"></i> <br>
+                            <span>Unallocated Nursing Officers</span>
+                        </center>
+
+                        <center>
+                            <span class="dashboard-number">{{ unAllocated_nurse }}</span>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+            <!--col-->
+            <div class="col mt-2" >
+                <div class="card ">
+                    <div class="card-body">
+                        <center>
+                            <i class="fas fa-funnel-dollar dashboard-icon"></i> <br>
+                            <span>Available Salary Groups</span>
+                        </center>
+
+                        <center>
+                            <span class="dashboard-number">{{ salary_group }}</span>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock content %}

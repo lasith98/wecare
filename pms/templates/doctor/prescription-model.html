@@ -1,0 +1,87 @@
+<form action="{% url 'clinical:doctor-prescription-create' %}" method="post" id="delete-form">
+    {% csrf_token %}
+    <input type="hidden" name="record_id" value="{{ record_id }}">
+    <div class="modal fade" id="diagnosis-model" data-backdrop="static" data-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center bg-success text-white">
+                    <h4 class="modal-title  font-weight-bold">New Drugs</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <select name="drug_id" data-live-search="true" data-width="100%"
+                                class=" selectpicker form-control" required id="drug_id">
+                            {% for drug in drugs %}
+                                <option value="{{ drug.id }}">{{ drug.name }}</option>
+                            {% endfor %}
+
+                        </select>
+                        <label for="drug_id" class="form-label">Drugs name</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" name="dose" class="form-control " required id="dose_id">
+                        <label for="dose_id" class="form-label">Dose</label>
+                    </div>
+                    <div class="form-group">
+                        <select name="time" class="form-control" required id="time_id">
+                            <option value="Day">Day</option>
+                            <option value="Night">Night</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Full Day">Full Day</option>
+                        </select>
+                        <label for=time_id" class="form-label">Time</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name="duration" class="form-control " required id="duration_id">
+                        <label for="duration_id" class="form-label">Duration</label>
+                    </div>
+                    <div class="form-group">
+                        <select name="duration_text" class="form-control" required id="duration_text_id">
+                            <option value="Day">Day</option>
+                            <option value="Week">Week</option>
+                            <option value="Month">Month</option>
+                        </select>
+                        <label for=duration_text_id" class="form-label">Duration Text</label>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        No
+                    </button>
+                    <button type="submit" class="btn btn-success">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('.diagnosis-model-btn').on('click', function () {
+
+            $('#diagnosis-model').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children('td').map(function () {
+                return $(this).text();
+            }).get();
+            let form = $('#delete-form')
+
+            form.attr('action', form.attr('action').replace('1', data[0].trim()))
+
+
+        });
+
+    })
+
+</script>

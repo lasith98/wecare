@@ -1,0 +1,98 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+
+
+
+    <div class="card">
+
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <a style="color: #412885" href="{% url 'ams_client_leave_request:ams_client_leave_request-create' %}"><i class="fas fa-plus"></i></a>
+
+
+                    <a style="float: right" href="{% url 'demo:demo-create' %}"><i class="fas fa-search"></i>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-sm">
+                <thead>
+                <tr>
+
+                    <th scope="col">Employee Id</th>
+                    <th scope="col">In time</th>
+                    <th scope="col">out Time</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                {% for object in  object_list %}
+                    <tr>
+
+
+                        <th scope="row">{{ object.employeeId }}</th>
+                        <th scope="row">{{ object.inTime }}</th>
+                        <th scope="row">{{ object.outTime }}</th>
+                        <td>
+                            <div>
+                                <a href="{% url 'mark_attendance_manual:ams_admin_attendance_create_out' object.id %}" role="button"
+                                   class="btn  edit-btn" style="padding: 0 0 0 0"><i
+                                        class="fas fa-edit fa-lg"></i></a>
+
+                                <button type="button" class="btn dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown"
+                                        aria-expanded="false"
+                                        style="padding: 0 0 0 10px;"></button>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item delete-btn" href="#">
+
+                                            <form action="{% url 'ams_client_leave_request:ams_client_leave_request-delete' object.id %}" method="post">
+                                                {% csrf_token %}
+                                                <button class="btn btn-sm" type="submit"
+                                                        onclick="return confirm('Are you sure you want to delete?')"><i
+                                                        class="far fa-trash-alt m-1"></i> Delete
+                                                </button>
+                                            </form>
+
+
+                                        </a>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block model %}
+
+{% endblock %}

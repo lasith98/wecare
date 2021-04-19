@@ -1,0 +1,60 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block title %}
+    Management Staff
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="card">
+        <div class="card-body">
+
+            <h5 class="card-title">Management Staff</h5>
+
+            <div class="card-header card-t">
+                <a href="{% url 'employee_management_system:ems_enroll_m_staff' %}"><i class="fas fa-plus"></i></a>
+                <a href="{% url 'employee_management_system:ems_update_man_staff' %}"><i class="fas fa-pen-alt"></i></a>
+            </div>
+
+
+            <table class="table table-sm">
+
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">NIC</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% if man_staff %}
+                    {% for emp in man_staff %}
+
+                        <tr>
+                            <th scope="row">{{emp.emp_id.id}}</th>
+                            <td>{{ emp.emp_id.emp_f_name }} {{ emp.emp_id.emp_s_name }}</td>
+                            <td>{{  emp.emp_id.emp_email }}</td>
+                            <td>{{  emp.emp_id.emp_address_three }}</td>
+                            <td>{{  emp.emp_id.emp_nic }}</td>
+                        </tr>
+
+                    {% endfor %}
+
+                {% endif %}
+                </tbody>
+
+            </table>
+
+
+        </div>
+    </div>
+
+
+
+
+
+{% endblock content %}

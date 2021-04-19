@@ -1,0 +1,55 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+    <form action="" method="post">
+       {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <a style="color: #412885" href="{% url 'purchases:purchases-list' %}"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="pDate">Date</label>
+                    <input type="date" class="form-control" id="pDate" aria-describedby="pDate" placeholder="Date" name="pDate" value="{{ object.pDate }}">
+                </div>
+                <div class="form-group">
+                    <label for="pInvoice">Invoice</label>
+                    <input type="number" class="form-control" id="pInvoice" aria-describedby="pInvoice" placeholder="invoice" name="pInvoice" value="{{ object.pInvoice }}">
+                </div>
+                <div class="form-group">
+                    <label for="pCode">Code</label>
+                    <input type="text" class="form-control" id="pCode" aria-describedby="pCode" placeholder="Code" name="pCode" value="{{ object.pCode }}">
+                </div>
+                <div class="form-group">
+                    <label for="pDescription">Description</label>
+                    <input type="text" class="form-control" id="pDescription" aria-describedby="pDescription" placeholder="Description" name="pDescription" value="{{ object.pDescription }}">
+                </div>
+                <div class="form-group">
+                    <label for="pQuantity">Quantity</label>
+                    <input type="number" class="form-control" id="pQuantity" aria-describedby="pQuantity" placeholder="Quantity" name="pQuantity" value="{{ object.pQuantity }}">
+                </div>
+
+                 
+
+
+            </div>
+
+        </div>
+    </form>
+
+
+
+
+{% endblock %}

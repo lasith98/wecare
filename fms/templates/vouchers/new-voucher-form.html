@@ -1,0 +1,81 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+<h4>Voucher</h4>
+    <form action="" method="post">
+       {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <a style="color: #412885" href="{% url 'vouchers:vouchers-list' %}"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+
+<!--                <div class="form-group">-->
+
+<!--                    <input type="number" class="form-control" id="voucher_no" aria-describedby="voucher_no" placeholder="Voucher No" name="voucher_no" value="{{ object.voucher_no }}">-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+
+<!--                    <input type="date" class="form-control" id="date" aria-describedby="date" placeholder="Date" name="date" value="{{ object.date }}">-->
+<!--                </div>-->
+
+<!--                 <div class="form-group">-->
+<!--&lt;!&ndash;                    <select class="form-select" aria-label="Default select example" name="account_no" value="{{ object.account_no }}">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option selected>Account No</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option value="1">One</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option value="2">Two</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <option value="3">Three</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </select>&ndash;&gt;-->
+<!--                     <input type="text" class="form-control" id="account_no" aria-describedby="account_no" placeholder="Account No" name="account_no" value="{{ object.account_no }}">-->
+<!--                </div>-->
+
+<!--                 <div class="form-group" >-->
+<!--                    <select class="form-select" aria-label="Default select example" name="supplier_id" value="{{ object.supplier_id }}" style="width: 1070px">-->
+<!--                        <option selected>Select Supplier</option>-->
+<!--                        <option value="1">S001</option>-->
+<!--                        <option value="2">S002</option>-->
+<!--                        <option value="3">S003</option>-->
+<!--                        <option value="3">S004</option>-->
+<!--                        <option value="3">S005</option>-->
+<!--                      </select>-->
+<!--                    &lt;!&ndash; <input type="number" class="form-control" id="supplier_id" aria-describedby="supplier_id" placeholder="Supplier" name="supplier_id" value="{{ object.supplier_id }}"> &ndash;&gt;-->
+<!--                </div>-->
+
+<!--              <div class="form-group">-->
+<!--&lt;!&ndash;                <div class="form-floating">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <textarea class="form-control" placeholder="Description here" id="v_description" name="v_description" value="{{ object.v_description }}"></textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                     <input type="text" class="form-control" id="description" aria-describedby="description" placeholder="Description here" name="description" value="{{ object.description }}">-->
+<!--                </div>-->
+
+<!--              <div class="form-group">-->
+
+<!--                    <input type="number" class="form-control" id="amount" aria-describedby="amount" placeholder="Amount($)" name="amount" value="{{ object.total_amount }}">-->
+<!--                </div>-->
+
+
+
+
+<!--            </div>-->
+
+            {{form.as_p}}
+        </div>
+    </form>
+
+
+
+
+{% endblock %}

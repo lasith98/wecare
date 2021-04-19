@@ -1,0 +1,36 @@
+{% extends 'layout/doctor-layout.html' %}
+
+
+{% block content %}
+    <form action="" method="post">
+        <div class="card">
+            <div class="card-header {% if object %} bg-warning{% else %} bg-success{% endif %} text-white">
+
+                <div class="row">
+
+                    <div class="col">
+                        <a style="color: #ffffff;margin-right: 30px" href="#" onclick="window.history.back();"
+                           role="button"><i
+                                class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
+                    </div>
+
+                    <div class="col">
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a style="color: #ffffff" href="#" onclick="$(this).closest('form').submit();"><i
+                                    class="fa fa-save" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="card-body">
+                {% csrf_token %}
+                {% block form_content %} {% endblock %}
+            </div>
+        </div>
+
+    </form>
+{% endblock %}

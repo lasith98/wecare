@@ -1,0 +1,58 @@
+{% extends 'layout/patient-layout.html' %}
+
+{% block content %}
+
+    <div class="card">
+
+        <div class="card-header">
+            <div class="row">
+                <div class="col  d-flex align-items-end justify-content-end">
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search " name="query" id="search-box">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-sm" id="search-table">
+                <thead>
+                <tr>
+
+                    <th scope="col">Transaction Id</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Bill No</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Download</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+
+                {% for object in  object_list %}
+                    <tr>
+                        <th scope="row">{{ object.id }}</th>
+                        <th scope="row">{{ object.date }}</th>
+                        <th scope="row">{{ object.bil_no }}</th>
+                        <th scope="row">{{ object.description }}</th>
+                        <th scope="row">{{ object.total }}</th>
+                        <th scope="row">{{ object.status }}</th>
+                        <th scope="row"><a href="{% url 'export:pdf' 3 'clinical-book' %}"><i
+                                class="fas fa-file-pdf text-danger"></i></a></th>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

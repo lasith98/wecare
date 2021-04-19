@@ -1,0 +1,88 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+
+<h4>Transaction</h4>
+
+    <form action="" method="post">
+       {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <a style="color: #412885" href="{% url 'transactions:transactions-list' %}"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+                 {{form.as_p}}
+            </div>
+<!--                &lt;!&ndash; TRANSACTION ID &ndash;&gt;-->
+<!--                <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="transaction_id" aria-describedby="transaction_id" placeholder="Transaction ID" name="transaction_id" value="{{ object.transaction_id }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; DATE CREATED &ndash;&gt;-->
+<!--                <div class="form-group">-->
+
+<!--                    <input type="date" class="form-control" id="date" aria-describedby="date" placeholder="Date" name="date" value="{{ object.date }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; SELECT DIVISION &ndash;&gt;-->
+<!--                 <div class="form-group">-->
+<!--                    <select class="form-select" aria-label="Default select example" id="account_no" name="account_no" value="{{ object.account_no }}">-->
+<!--                        <option selected>Account No</option>-->
+<!--                        <option value="1">One</option>-->
+<!--                        <option value="2">Two</option>-->
+<!--                        <option value="3">Three</option>-->
+<!--                      </select>-->
+<!--                     <input type="text" class="form-control" id="account_no" aria-describedby="account_no" placeholder="Account No" name="account_no" value="{{ object.account_no }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; DESCRIPTION &ndash;&gt;-->
+<!--              <div class="form-group">-->
+<!--                    <div class="form-floating">-->
+<!--                        <textarea class="form-control" placeholder="Description here" id="t_description" name="t_description" value="{{ object.t_description }}"></textarea>-->
+<!--                    </div>-->
+
+<!--                     <input type="text" class="form-control" id="t_description" aria-describedby="t_description" placeholder="Description here" name="t_description" value="{{ object.t_description }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; TOTAL AMOUNT &ndash;&gt;-->
+<!--              <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="t_amount" aria-describedby="t_amount" placeholder="Amount($)" name="t_amount" value="{{ object.t_amount }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; SELECT STATUS &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                    <select class="form-select" aria-label="Default select example" id="status" name="status" value="{{ object.status }}">-->
+<!--                        <option selected>Status</option>-->
+<!--                        <option value="1">Pending</option>-->
+<!--                        <option value="2">Completed</option>-->
+<!--                        -->
+<!--                      </select>-->
+<!--                </div>-->
+
+
+
+
+
+
+    </form>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Allocate Nurses
+{% endblock title %}
+
+{% block content %}
+    <!--message window-->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <!--message window-->
+
+     <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Allocate Nurses</h5>
+                <hr>
+
+                <div class="container pl-5 pr-5 enroll_form_padding" >
+
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-8">
+                                {% if rooms %}
+
+                                    <select class="form-control" name="selected_room">
+
+                                        {% for room in rooms %}
+                                            <option value={{ room.id }}>{{  room.r_name }}</option>
+                                        {% endfor %}
+
+                                    </select>
+
+                                {% endif %} 
+                            </div>
+                            <div class="col-sm-4">
+                              <button type="submit" name = 'search_room' class="btn btn-outline-success w-100"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+     </div>
+
+    {% if available_nurses or selected_room%}
+
+        <div class="card mt-4">
+            <div class="card-body">
+
+                <form action="" method="post">
+
+                    <div>
+                        <h5>Room Name : {{ selected_room.r_name }}</h5>
+                        <h6>Location : {{ selected_room.r_location }}</h6>
+                        <h6>Room Size : {{ selected_room.r_size }}</h6>
+                        <input type="hidden" name="room_to_allocate" value="{{ selected_room.id }}">
+                    </div>
+
+                    <hr>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-5" id="allocated">
+
+                                {% for nurse in allocated_nuress %}
+
+                                    <div id="{{ nurse.id }}" data-true = 'false'>
+                                        <div class="card mt-2">
+                                            <div class="card-body">
+                                                <div class="row">
+
+                                                    <div class="col-sm-3 left display-none"  onclick="change('{{ nurse.id }}')">
+                                                        <i class="fas fa-angle-left arrow_bg_blue"></i>
+                                                    </div>
+
+                                                    <div class="col-sm-9">
+                                                        {{ nurse.emp_id.emp_f_name }} {{ nurse.emp_id.emp_s_name }}
+                                                        <input type="hidden" name="allocated" class="alocateToggle" value="{{ nurse.id }}">
+                                                    </div>
+
+                                                    <div class="col-sm-3 right"  onclick="change('{{ nurse.id }}')">
+                                                        <i class="fas fa-angle-right arrow_bg_red"></i>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+
+                            <div class="col-sm-2">
+
+                            </div>
+
+                            <div class="col-sm-5" id="unAllocated">
+
+                                {% for nurse in available_nurses %}
+                                    <div id="{{ nurse.id }}" data-true = 'true'>
+                                        <div class="card mt-2">
+                                            <div class="card-body">
+                                                <div class="row">
+
+                                                    <div class="col-sm-3 left"  onclick="change('{{ nurse.id }}')">
+                                                        <i class="fas fa-angle-left arrow_bg_blue"></i>
+                                                    </div>
+
+                                                    <div class="col-sm-9">
+                                                        {{ nurse.emp_id.emp_f_name }} {{ nurse.emp_id.emp_s_name }}
+                                                        <input type="hidden" class="alocateToggle" name="unAllocated" value="{{ nurse.id }}">
+                                                    </div>
+
+                                                    <div class="col-sm-3 right display-none"  onclick="change('{{ nurse.id }}')">
+                                                        <i class="fas fa-angle-right arrow_bg_red"></i>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {% csrf_token %}
+                    <center><button name="update_allocation" type="submit" class="btn btn-outline-success mt-3"> <i class="fas fa-wrench"></i> Update This Result</button></center>
+
+                </form>
+
+            </div>
+        </div>
+        
+    {% endif %}
+
+{% endblock %}

@@ -29,3 +29,5 @@ class DemoDeleteView(DeleteView):
     model = Demo
     template_name = ""
     success_url = reverse_lazy('demo:demo-list')
+
+

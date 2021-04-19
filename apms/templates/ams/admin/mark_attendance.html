@@ -1,0 +1,52 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+
+
+
+    <div class="card text-center">
+  <div class="card-header" style="background-color: darkseagreen">
+    <h5 class="card-title">Manual Attendance Marking</h5>
+  </div>
+  <div class="card-body">
+
+
+          <form method="post" action="">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <input type="submit" value="Submit" style="width: 150px"   >
+
+
+
+
+    </form>
+
+
+
+
+  </div>
+  <div class="card-footer text-muted">
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+
+
+
+
+
+
+{% block content %}
+
+
+<h4>Account</h4>
+    <form action="" method="post">
+       {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <a style="color: #412885" href="{% url 'accounts:accounts-list' %}"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+<!--                &lt;!&ndash; ACCOUNT NO &ndash;&gt;-->
+<!--                <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="acc_no" aria-describedby="acc_no" placeholder="Account No" name="acc_no" value="{{ object.acc_no }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; DATE CREATED &ndash;&gt;-->
+<!--                <div class="form-group">-->
+
+<!--                    <input type="datetime-local" class="form-control" id="date" aria-describedby="date" placeholder="Date created" name="date" value="{{ object.date }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; ACCOUNT NAME &ndash;&gt;-->
+<!--                 <div class="form-group">-->
+
+<!--                     <input type="text" class="form-control" id="acc_name" aria-describedby="acc_name" placeholder="Account name" name="acc_name" value="{{ object.acc_name }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; BANK NAME &ndash;&gt;-->
+<!--              <div class="form-group">-->
+
+<!--                     <input type="text" class="form-control" id="bank_name" aria-describedby="bank_name" placeholder="Bank name" name="bank_name" value="{{ object.bank_name }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; BRANCH NAME &ndash;&gt;-->
+<!--              <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="branch_name" aria-describedby="branch_name" placeholder="Branch name" name="branch_name" value="{{ object.branch_name }}">-->
+<!--                </div>-->
+
+<!--                  &lt;!&ndash; PHONE &ndash;&gt;-->
+<!--              <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="phone" aria-describedby="phone" placeholder="Phone number" name="phone" value="{{ object.phone }}">-->
+<!--                </div>-->
+
+<!--                  &lt;!&ndash; STREET address 1&ndash;&gt;-->
+<!--              <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="street_a1" aria-describedby="street_a1" placeholder="Street address line 1" name="street_a1" value="{{ object.street_a1 }}">-->
+<!--                </div>-->
+
+<!--                  &lt;!&ndash; STREET address 2 &ndash;&gt;-->
+<!--              <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="street_a2" aria-describedby="street_a2" placeholder="Street address line 2" name="street_a2" value="{{ object.street_a2 }}">-->
+<!--                </div>-->
+
+<!--                  &lt;!&ndash; CITY &ndash;&gt;-->
+<!--              <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="city" aria-describedby="city" placeholder="City" name="city" value="{{ object.city }}">-->
+<!--                </div>-->
+
+<!--                  &lt;!&ndash; STATE &ndash;&gt;-->
+<!--              <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="state" aria-describedby="state" placeholder="State" name="state" value="{{ object.state }}">-->
+<!--                </div>-->
+
+
+
+
+
+
+
+<!--            </div>-->
+            {{form.as_p}}
+        </div>
+    </form>
+
+
+
+
+
+
+{% endblock %}
