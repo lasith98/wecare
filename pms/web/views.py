@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
-
 # Create your views here.
+from apis.BillingApi import BillingApi
+
 
 def index(request):
-    return render(request, "layout/dashboard-layout.html")
+    return render(request, "layout/patient-layout.html")

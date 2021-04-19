@@ -1,0 +1,124 @@
+{% extends 'layout/doctor-layout.html' %}
+
+{% block content %}
+    <div class="card">
+
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <a style="color: #412885;margin-right: 20px" href="{% url 'clinical:doctor-list' %}"><i
+                            class="fas fa-arrow-left"></i></a>
+                    <a style="color: #412885" href="{% url 'clinical:doctor-record' object.id %}"><i
+                            class="fas fa-plus"></i></a>
+                </div>
+
+                <div class="col">
+                    <div class="col  d-flex align-items-end justify-content-end">
+                        <a style="color: #412885" href="#"
+                           onclick="printDiv('print')"><i class="fas fa-print"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body"  id="print">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-pause="true"
+                 data-interval="false">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+
+                        <div class="carousel-inner">
+                            {% if object.records %}
+                                {% for record  in object.records %}
+
+                                    {% if forloop.counter == 1 %}
+                                        <div class="carousel-item active">
+                                    {% else %}
+                                        <div class="carousel-item">
+                                    {% endif %}
+
+                                <div style="background-color: #E9ECEF"
+                                     class="mb-4">{{ record.created |date:'Y-m-d H:i' }}</div>
+                                <div class="border mb-4">
+                                    <fieldset class="mt-3">
+                                        <legend class="ml-4">Diagnosis</legend>
+                                        <p class="ml-4">{{ record.diagnosis }}</p>
+                                    </fieldset>
+                                </div>
+
+                                <div class="border mb-4">
+                                    <fieldset class="mt-3">
+                                        <legend class="ml-4">Lab Report</legend>
+                                        <ul class=" ml-4 list-group">
+                                            {% if record.labs %}
+                                                {% for lab in record.labs %}
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        {{ lab.name }}
+                                                        <span class="badge badge-primary badge-pill">{{ lab.status }}</span>
+                                                    </li>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </ul>
+                                    </fieldset>
+                                </div>
+
+                                <div class="border mb-4">
+                                    <fieldset class="mt-3">
+                                        <legend class="ml-4">Prescription</legend>
+                                        {% if record.prescriptions %}
+
+                                            <table class="  table table-sm ">
+                                                <thead>
+                                                <tr>
+
+                                                    <th scope="col">Doug name</th>
+                                                    <th scope="col">Dose</th>
+                                                    <th scope="col">Time</th>
+                                                    <th scope="col">Duration</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                {% for prescription in record.prescriptions %}
+
+                                                    <tr>
+                                                        <td>{{ prescription.doug_name }}</td>
+                                                        <td>{{ prescription.dose }}</td>
+                                                        <td>{{ prescription.time }}</td>
+                                                        <td>{{ prescription.duration }} {{ prescription.duration_text }}</td>
+
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        {% endif %}
+                                    </fieldset>
+                                </div>
+
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                        </div>
+
+
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+{% endblock %}

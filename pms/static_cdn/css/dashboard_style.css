@@ -71,3 +71,10 @@ body{
   width:100px;
   height: 35px ;
 }
+.wrapper .sidebar h5{
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}

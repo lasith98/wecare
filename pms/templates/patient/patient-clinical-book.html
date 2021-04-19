@@ -1,0 +1,63 @@
+{% extends 'layout/patient-layout.html' %}
+
+{% block content %}
+
+    <div class="card">
+
+        <div class="card-header">
+            <div class="row">
+                <div class="col  d-flex align-items-end justify-content-end">
+                    <form action="" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search book name " name="query">
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-sm">
+                <thead>
+                <tr>
+
+                    <th scope="col">Book name</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Export</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+
+                {% for object in  object_list %}
+                    <tr>
+                        <th scope="row">{{ object.name }}</th>
+                        <th scope="row">{{ object.created |date:'Y-m-d H:i' }}</th>
+                        <th>
+                            <a href="{% url 'patient:clinical-book-detail' object.id %}" class="text-dark"
+                               style="padding: 0 0 0 0;margin-right: 20px"> <i class="fas fa-eye fa-lg"></i></a>
+                        </th>
+                        <th>
+                            <a href="{% url 'export:pdf' object.id 'clinical-book' %}"><i
+                                    class="fas fa-file-pdf text-danger"></i></a>
+                        </th>
+
+
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+{% endblock %}

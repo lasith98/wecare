@@ -1,0 +1,49 @@
+<form action="{{ delete_link }}" method="post" id="delete-form">
+    {% csrf_token %}
+    <div class="modal fade" id="delete-modal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center bg-danger text-white">
+                    <h4 class="modal-title  font-weight-bold">Delete</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">
+                        No
+                    </button>
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('.delete-btn').on('click', function () {
+
+            $('#delete-modal').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children('td').map(function () {
+                return $(this).text();
+            }).get();
+            console.log(data)
+            let form = $('#delete-form')
+            console.log(form.attr('action').replace('1', data[0].trim()))
+            form.attr('action', form.attr('action').replace('1', data[0].trim()))
+
+
+        });
+
+    })
+
+</script>

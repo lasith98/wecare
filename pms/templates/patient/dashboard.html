@@ -1,0 +1,88 @@
+{% extends 'layout/patient-layout.html' %}
+
+{% block content %}
+
+
+    <div class="row row-cols-1 row-cols-md-4 g-4  mb-4">
+        <div class="col">
+            <div class="card border border-primary">
+
+                <div class="card-header bg-primary">
+                    <h5 class="card-title text-center text-white">Next clinic day</h5>
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text text-center">2021/03/02</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border border-secondary">
+
+                <div class="card-header bg-secondary">
+
+                    <h5 class="card-title text-center text-white">Total pending lab report</h5>
+                </div>
+
+                <div class="card-body">
+                    {% if pending_lab_report %}
+                        <p class="card-text text-center">{{ pending_lab_report }}</p>
+                    {% else %}
+                        0
+                    {% endif %}
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border border-success">
+
+                <div class="card-header bg-success">
+                    <h5 class="card-title text-center text-white">Clinical books</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-text text-center">{{ clinical_books }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border border-info">
+
+                <div class="card-header bg-info">
+                    <h5 class="card-title text-center text-white">Health level</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <p class="card-text text-warning text-center">Good</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border border-warning">
+
+        <div class="card-header ">
+            <p class="card-title  text-warning ">News Feed</p>
+        </div>
+
+        <div class="card-body">
+
+            <ul class="list-group">
+                <li class="list-group-item"><a href="#">Happy new year</a></li>
+                <li class="list-group-item"><a href="#">10 % discount for next checkup</a></li>
+                <li class="list-group-item"><a href="https://www.hpb.health.gov.lk/en/covid-19">Coronavirus update</a>
+                </li>
+                <li class="list-group-item"><a href="#">Test one</a></li>
+                <li class="list-group-item"><a href="#">Notice one</a></li>
+                <li class="list-group-item"><a href="#">Coronavirus vaccine 2020/2/02</a></li>
+                <li class="list-group-item"><a href="#">Coronavirus vaccine 2020/3/02</a></li>
+                <li class="list-group-item"><a href="#">Coronavirus vaccine 2020/4/02</a></li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

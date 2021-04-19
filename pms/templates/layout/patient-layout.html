@@ -1,0 +1,29 @@
+{% extends 'layout/base-layout.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="wrapper">
+        <div class="sidebar">
+            <h5>We Care</h5>
+            <ul>
+                <li><a href="{% url 'patient:dashboard' %}"><i class="fas fa-braille"></i>Dashboard</a></li>
+                <li><a href="{% url 'patient:clinical-book-list' %}"><i class="fas fa-clone"></i>Medical Profile</a>
+                </li>
+                <li><a href="{% url 'patient:wallet' %}"><i class="fas fa-dollar-sign"></i>Wallet</a></li>
+                <li><a href="{% url 'patient:care_me' %}"><i class="fas fa-file-invoice-dollar"></i>Care Me</a></li>
+                <li><a href=""><i class="fas fa-sign-out-alt"></i>Log out</a></li>
+            </ul>
+
+        </div>
+        <div class="main_content">
+            <div class="info">
+                <div class="container-fluid">
+
+                    {% block content %} {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
