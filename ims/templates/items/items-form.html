@@ -1,0 +1,88 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+<form action="" method="post" id="form1">
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <a style="color: #412885" href="{% url 'items:items-list' %}"><i class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="col">
+                    <div class="d-flex align-items-end justify-content-end">
+                        <a style="color: #412885" href="#" onclick=" Validate();"><i class="fas fa-save"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card-body">
+            <div class="form-group">
+                <label for="category1">Category</label>
+                <select class="form-control" name="category1" id="category1" onchange="setVal(event)">
+                    <option value="Drugs">Drugs</option>
+                    <option value="Suppliers">Suppliers</option>
+                    <option value="Furniture">Furniture</option>
+                </select>
+
+                <input type="hidden" class="form-control" id="category" aria-describedby="category"
+                    placeholder="category" name="category" value="{{ object.category }}">
+            </div>
+            <div class="form-group">
+                <label for="code">Code</label>
+                <input type="text" class="form-control" id="code" aria-describedby="code" placeholder="code" name="code"
+                    value="{{ object.code }}">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" aria-describedby="description"
+                    placeholder="description" name="description" value="{{ object.description }}">
+            </div>
+            <div class="form-group">
+                <label for="purchase">Purchase</label>
+                <input type="number" class="form-control" id="purchase" aria-describedby="purchase"
+                    placeholder="purchase" name="purchase" value="{{ object.purchase }}">
+            </div>
+            <div class="form-group">
+                <label for="unitPrice">Unit Price</label>
+                <input type="number" class="form-control" id="unitPrice" aria-describedby="unitPrice"
+                    placeholder="unitPrice" name="unitPrice" value="{{ object.unitPrice }}">
+            </div>
+
+            <div class="form-group">
+                <label for="supplier">Supplier</label>
+                <input type="text" class="form-control" id="supplier" aria-describedby="supplier" placeholder="supplier"
+                    name="supplier" value="{{ object.supplier }}">
+            </div>
+
+
+        </div>
+
+    </div>
+</form>
+<script>
+    function setVal(e) {
+        document.getElementById("category").value = e.target.value
+    }
+</script>
+<script>
+    function Validate() {
+        var numbers = /^[0-9]+$/;
+        if (form1.unitPrice.value.match(numbers) && form1.purchase.value.match(numbers)) {
+            document.getElementById("form1").submit();
+            return (true)
+        }
+        else {
+            alert('Please input numeric characters only');
+            return false;
+        }
+    }
+</script>
+
+
+
+
+{% endblock %}

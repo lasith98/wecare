@@ -21,7 +21,13 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('web.urls')),
-    path('demo/', include('demo.urls'))
+    path('demo/', include('demo.urls')),
+    path('items/', include('items.urls')),
+    path('suppliers/', include('suppliers.urls')),
+    path('newOrder/', include('newOrder.urls')),
+    path('purchases/', include('purchases.urls')),
+    path('stocks/', include('stocks.urls')),
+    path('newSales/', include('newSales.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
