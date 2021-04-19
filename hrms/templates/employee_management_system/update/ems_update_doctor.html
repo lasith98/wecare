@@ -1,0 +1,144 @@
+{% extends 'layout/dashboard-layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Update Doctor EMS
+{% endblock %}
+
+{% block content %}
+     <!--message window-->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Search Doctor By Email</h5>
+            <hr>
+
+            <div class="container pl-5 pr-5 enroll_form_padding" >
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-8">
+                          <input class="form-control" type="email" name="d_email" placeholder="Employee Email" required>
+                        </div>
+                        <div class="col-sm-4">
+                          <button type="submit" name = 'search_by_email' class="btn btn-outline-success w-100"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--update form-->
+
+    {% if emp_form %}
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Update Doctor Info</h5>
+            <hr>
+            <h4>Employee Id : {{ emp_id }}</h4>
+
+            <div class="container pl-5 pr-5 enroll_form_padding" >
+
+                <form action="" method="post">
+
+                    {% csrf_token %}
+
+                    <fieldset><!--basic info -->
+                        <legend>Basic Details About Doctor</legend>
+
+                        <div class="row">
+                            <div class="col-sm">
+                                {{ emp_form.emp_f_name | as_crispy_field}}
+                            </div>
+                            <div class="col-sm">
+                                {{ emp_form.emp_s_name | as_crispy_field}}
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm">
+                                {{ emp_form.emp_nic | as_crispy_field}}
+                            </div>
+                            <div class="col-sm">
+                                {{ emp_form.emp_dob | as_crispy_field}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm">
+                               {{ emp_form.emp_address_one | as_crispy_field}}
+                            </div>
+                            <div class="col-sm">
+                                {{ emp_form.emp_address_two | as_crispy_field}}
+                            </div>
+                        </div>
+
+
+                        {{ emp_form.emp_address_three | as_crispy_field}}
+
+
+                        {{ emp_form.emp_email | as_crispy_field}}
+
+                        {{ emp_form.sg_group | as_crispy_field}}
+
+                    </fieldset><!--basic info -->
+
+                    <br>
+
+                    <fieldset><!--specific info-->
+                        <legend>Specific Details About Doctor</legend>
+
+                        {{ doc_form.spe_id | as_crispy_field }}
+
+                        <div class="row">
+                            <div class="col-sm">
+                                {{ doc_form.d_university | as_crispy_field }}
+                            </div>
+                            <div class="col-sm">
+                                {{ doc_form.d_degree | as_crispy_field }}
+                            </div>
+                        </div>
+
+                         <div class="row">
+                            <div class="col-sm">
+                                {{ doc_form.d_moh_reg_number | as_crispy_field }}
+                            </div>
+                            <div class="col-sm">
+                                {{ doc_form.d_max_patont_count | as_crispy_field }}
+                            </div>
+                        </div>
+
+                    </fieldset><!--specific info-->
+
+                    <div class="mt-5 enroll_form_button_pannel">
+
+                        <div>
+                            <button type="submit" class="btn btn-outline-success" name = "update_employee">Update Doctor</button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+
+
+{% endblock %}

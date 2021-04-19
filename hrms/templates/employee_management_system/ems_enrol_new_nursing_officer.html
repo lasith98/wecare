@@ -1,0 +1,108 @@
+{% extends 'layout/dashboard-layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Enroll Nurse EMS
+{% endblock title %}
+
+{% block content %}
+
+     <!--message window-->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <!--message window-->
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Enroll New Nursing Officer</h5>
+            <hr>
+
+            <div class="container pl-5 pr-5 enroll_form_padding" >
+
+                <form action="" method="post">
+
+                    {% csrf_token %}
+
+                    <fieldset><!--basic info -->
+                        <legend>Basic Details About Nursing Officer</legend>
+
+                        <div class="row">
+                            <div class="col-sm">
+                                {{ employee.emp_f_name | as_crispy_field}}
+                            </div>
+                            <div class="col-sm">
+                                {{ employee.emp_s_name | as_crispy_field}}
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm">
+                                {{ employee.emp_nic | as_crispy_field}}
+                            </div>
+                            <div class="col-sm">
+                                {{ employee.emp_dob | as_crispy_field}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm">
+                               {{ employee.emp_address_one | as_crispy_field}}
+                            </div>
+                            <div class="col-sm">
+                                {{ employee.emp_address_two | as_crispy_field}}
+                            </div>
+                        </div>
+
+
+                        {{ employee.emp_address_three | as_crispy_field}}
+
+
+                        {{ employee.emp_email | as_crispy_field}}
+
+                        {{ employee.sg_group | as_crispy_field}}
+
+                    </fieldset><!--basic info -->
+
+                    <br>
+
+                    <fieldset><!--specific info-->
+                        <legend>Specific Details About Nursing Officer</legend>
+
+                        <div class="row">
+                            <div class="col-sm">
+                                {{ nurse.nf_maximum_qualification | as_crispy_field }}
+                            </div>
+                            <div class="col-sm">
+                                {{ nurse.nf_moh_reg_number | as_crispy_field }}
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <div class="mt-5 enroll_form_button_pannel">
+
+                        <div>
+                            <button type="submit" class="btn btn-outline-success">Enroll Nursing Officer</button>
+                            <button type="reset" class="btn btn-outline-danger">Reset Form</button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

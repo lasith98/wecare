@@ -1,22 +1,144 @@
 {% extends 'layout/base-layout.html' %}
 {% load static %}
+
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/dashboard_style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/dashboard_style.css' %}">
 {% endblock %}
 
 {% block body %}
     <div class="wrapper">
         <div class="sidebar">
             <img src="{% static 'img/tokoIG.jpg' %}" alt="logo" width="200" height="70" style="margin-bottom: 10px">
-            <ul>
-                <li><a href=""><i class="fas fa-braille"></i>Dashboard</a></li>
-                <li><a href="{% url 'demo:demo-list' %}"><i class="fas fa-clone"></i>Demo</a></li>
-                <li><a href=""><i class="fas fa-dollar-sign"></i>Revenue</a></li>
-                <li><a href=""><i class="fas fa-file-invoice-dollar"></i>Expenses</a></li>
-                <li><a href=""><i class="fas fa-users"></i>Team</a></li>
-                <li><a href=""><i class="fas fa-running"></i>Target</a></li>
-                <li><a href=""><i class="fas fa-sign-out-alt"></i>Log out</a></li>
-            </ul>
+
+
+            <div class="accordion" id="accordionExample">
+
+                <div class="card side_bar_card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" onclick="window.location.href = '{% url 'employee_management_system:ems_home' %}'" type="button" data-toggle="" data-target="" aria-expanded="true" aria-controls="">
+                                Dashboard
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="card side_bar_card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Employee Management
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                                <ul>
+                                    <li><a href="{% url 'employee_management_system:ems_doctor' %}"><i class="fas fa-user-md"></i>Doctor</a></li>
+                                    <li><a href="{% url 'employee_management_system:ems_nursing_officer' %}"><i class="fas fa-user-nurse"></i>Nursing officer</a></li>
+                                    <li><a href="{% url 'employee_management_system:emp_health_professional' %}"><i class="fas fa-briefcase-medical"></i>Health Professional</a></li>
+                                    <li><a href="{% url 'employee_management_system:emp_management_staff' %}"><i class="fas fa-users"></i>Management Staff</a></li>
+
+                                    <!--dro down window -->
+                                    <li>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-6">
+
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-funnel-dollar lite_icon"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dark-drop-down">
+                                                            <a class="dropdown-item" href="{% url 'employee_management_system:new_salary_group' %}">Add new Salary Group</a>
+                                                            <a class="dropdown-item" href="{% url 'employee_management_system:ems_update_salary_group' %}">Update Salary Group</a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-user-tag lite_icon"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu dark-drop-down">
+                                                            <a class="dropdown-item" href="{% url 'employee_management_system:ems_new_specialization' %}">New Doctor Specialization</a>
+                                                            <a class="dropdown-item" href="{% url 'employee_management_system:ems_update_doctor_specialization' %}">Update Specialization</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card side_bar_card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Room Management
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul>
+                                    <li><a href="{% url 'room_management_system:rms_add_room' %}"><i class="fas fa-home"></i>Add Room</a></li>
+                                    <li><a href="{% url 'room_management_system:rms_update_room' %}"><i class="far fa-building"></i>Update Room</a></li>
+                                    <li><a href="{% url 'room_management_system:rms_delete_room' %}"><i class="fas fa-igloo"></i>Delete Room</a></li>
+                                    <li><a href="{% url 'room_management_system:rms_view_rooms' %}"><i class="fas fa-house-damage"></i>Get Rooms List</a></li>
+                                    <li><a href="{% url 'room_management_system:rms_allocate_doc' %}"><i class="fas fa-user-check"></i>Allocate Doctor</a></li>
+                                    <li><a href=""><i class="fas fa-users"></i>Re Allocate Doctor</a></li>
+                                    <li><a href="{% url 'room_management_system:rms_allocate_nurses' %}"><i class="fas fa-clipboard-check"></i>Allocate Nurses</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card side_bar_card">
+                    <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    WorkShift Management
+                                </button>
+                            </h2>
+                        </div>
+
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                             <ul>
+                                    <li><a href="{% url 'shift_management_system:genarate_next_month_shift' %}"><i class="fas fa-network-wired"></i>Generate Shift</a></li>
+                                    <li><a href="{% url 'shift_management_system:view_shifts' %}"><i class="fas fa-binoculars"></i>View Shifts</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card side_bar_card">
+                    <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Attendance Approving
+                                </button>
+                            </h2>
+                        </div>
+
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
         <div class="main_content">
@@ -31,3 +153,6 @@
 
 
 {% endblock %}
+
+
+

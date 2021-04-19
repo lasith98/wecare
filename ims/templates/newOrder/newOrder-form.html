@@ -1,0 +1,74 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+    <form action="" method="post">
+       {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <a style="color: #412885" href="{% url 'newOrder:newOrder-list' %}"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+                
+                <div class="form-group">
+                    <label for="code">Code </label>
+                    <input type="text" class="form-control" id="code" aria-describedby="code" placeholder="Code" name="code" value="{{ object.code }}">
+                </div>
+                <div class="form-group">
+                    <label for="cusCategory">Customer Category </label>
+                    <input type="text" class="form-control" id="cusCategory" aria-describedby="cusCategory" placeholder="Customer Category" name="cusCategory" value="{{ object.cusCategory }}">
+                </div>
+                <div class="form-group">
+                    <label for="cusNo">Customer NO</label>
+                    <input type="text" class="form-control" id="cusNo" aria-describedby="cusNo" placeholder="Customer NO" name="cusNo" value="{{ object.cusNo }}">
+                </div>
+                <div class="form-group">
+                    <label for="description1">Description</label>
+                    <select class="form-control" name="description1" id="description1" onchange="myFunction(event)">
+                        <option value="description1">description1</option>
+                        <option value="description2">description2</option>
+                        <option value="description3">description3</option>
+                      </select>
+                    
+                    <input type="hidden" class="form-control" id="description" aria-describedby="description" placeholder="Description" name="description" value="{{ object.description }}">
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" aria-describedby="quantity" placeholder="Quantity" name="quantity" value="{{ object.quantity }}">
+                </div>
+                <div class="form-group">
+                    <label for="unitPrice">Unit Price</label>
+                    <input type="number" class="form-control" id="unitPrice" aria-describedby="unitPrice" placeholder="unitPrice" name="unitPrice" value="{{ object.unitPrice }}">
+                </div>
+
+                 <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" class="form-control" id="amount" aria-describedby="amount" placeholder="amount" name="amount" value="{{ object.amount }}">
+                </div>
+
+
+            </div>
+
+        </div>
+    </form>
+    <script>
+        function myFunction(e) {
+        document.getElementById("description").value = e.target.value
+}
+    </script>
+
+
+
+
+{% endblock %}

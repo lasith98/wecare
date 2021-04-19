@@ -38,7 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'demo',
-
+    'items',
+    'suppliers',
+    'newOrder',
+    'purchases',
+    'stocks',
+    'newSales',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'pms.urls'
+ROOT_URLCONF = 'ims.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pms.wsgi.application'
+WSGI_APPLICATION = 'ims.wsgi.application'
 
 
 # Database

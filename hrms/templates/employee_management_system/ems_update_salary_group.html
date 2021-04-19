@@ -1,0 +1,83 @@
+
+{% extends 'layout/dashboard-layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Update Salary Group EMS
+{% endblock %}
+
+{% block content %}
+     <!--message window-->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <!--message window-->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Update Salary Group</h5>
+            <hr>
+
+            <div class="container pl-5 pr-5 enroll_form_padding" >
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <select class="form-control" name = 'search_key'>
+                                {% if select_items %}
+                                    {% for item in select_items %}
+                                        <option value="{{ item.sg_name }}">{{ item.sg_name }}</option>
+                                    {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                          <button type="submit" name = 'search_form' class="btn btn-outline-success w-100"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    {% if salary_form %}
+     <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Edit What You Want <span style="float: right">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ delete_key }}" name="delete_key">
+                    <button type="submit" name = 'delete_form' class="btn btn-outline-danger w-100"><i class="fas fa-trash-alt"></i></button></span>
+                </form>
+            </h5>
+            <hr>
+
+            <div class="container pl-5 pr-5 enroll_form_padding" >
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ salary_form |crispy}}
+
+                    <input type="hidden" value="{{ update_key }}" name = 'update_key'>
+                    <div class="mt-5 enroll_form_button_pannel">
+
+                        <div>
+                            <button type="submit" class="btn btn-outline-success" name = "update_form">Update Changers</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}
