@@ -6,15 +6,40 @@
 
 {% block body %}
     <div class="wrapper">
-        <div class="sidebar">
+        <div class="sidebar" id="according">
             <img src="{% static 'img/tokoIG.jpg' %}" alt="logo" width="200" height="70" style="margin-bottom: 10px">
             <ul>
                 <li><a href=""><i class="fas fa-braille"></i>Dashboard</a></li>
                 <li><a href="{% url 'demo:demo-list' %}"><i class="fas fa-clone"></i>Demo</a></li>
-                <li><a href=""><i class="fas fa-dollar-sign"></i>Revenue</a></li>
-                <li><a href=""><i class="fas fa-file-invoice-dollar"></i>Expenses</a></li>
-                <li><a href=""><i class="fas fa-users"></i>Team</a></li>
-                <li><a href=""><i class="fas fa-running"></i>Target</a></li>
+                <li>
+                        <a href="#collapseOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fas fa-folder-plus"></i>Reports</a>
+                      
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#according">
+                          <div class="card-body">
+                            <ul>
+                            <li><a href="{% url 'bloodCount:bloodCount-list' %}"></i>Blood Count</a></li>
+                            <li><a href=""></i>Urine</a></li>
+                            <li><a href="{% url 'thyrod:thyrod-list' %}"></i>Thyroid</a></li>
+                            <li><a href=""></i>Kidney</a></li>
+                        </ul>
+                        </div>
+                        </div>
+                    
+                </li>
+
+                <li>
+                    <a href="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"><i class="fas fa-folder-plus"></i>Inventory</a>
+                  
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingOne" data-parent="#according">
+                      <div class="card-body">
+                        <ul>
+                        <li><a href="{% url 'invDrugs:invDrugs-list' %}"></i>Drugs</a></li>
+                        <li><a href="{% url 'invEquipments:invEquipments-list' %}"></i>Equipments</a></li>
+                    </ul>
+                    </div>
+                    </div>
+                
+            </li>
                 <li><a href=""><i class="fas fa-sign-out-alt"></i>Log out</a></li>
             </ul>
 
