@@ -1,0 +1,40 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+
+
+
+
+
+{% block content %}
+
+
+
+
+
+    <div class="card">
+  <h5 class="card-header">Apply for a Leave</h5>
+  <div class="card-body">
+
+      <form method="post" action="" style="justify-content: left">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <input type="submit" value="Submit" style="width: 150px">
+
+    </form>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
