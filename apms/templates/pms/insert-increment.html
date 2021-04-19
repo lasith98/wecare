@@ -1,0 +1,74 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+
+    <div class="card">
+  <h5 class="card-header">Handle Increment</h5>
+  <div class="card-body">
+
+          <form action="" method="post">
+       {% csrf_token %}
+
+
+           {{ form.as_p }}
+
+        <input type="submit" value="Submit">
+
+          </form>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        <!--
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <a style="color: #412885" href="{% url 'pms_allowances:allowance-List' %}"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Allowance Name</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Allowance Name" name="name" value="{{ object.allowance_name }}">
+                </div>
+
+                 <div class="form-group">
+                    <label for="age">Allowance Amount</label>
+                    <input type="number" class="form-control" id="age" aria-describedby="age" placeholder="Amount" name="age" value="{{ object.allowance_amount }}">
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        -->
+
+
+
+
+
+
+{% endblock %}

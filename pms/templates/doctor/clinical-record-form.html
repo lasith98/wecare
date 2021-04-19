@@ -1,0 +1,170 @@
+{% extends 'layout/doctor-layout.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="card">
+
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <a style="color: #412885;margin-right: 20px" href="{% url 'clinical:doctor-detail' book_id %}"><i
+                            class="fas fa-arrow-left"></i></a>
+                    <a style="color: #412885" href="{% url 'clinical:doctor-create' %}"><i class="fas fa-plus"></i></a>
+                </div>
+                {% if object.id %}
+                    <div class="col  d-flex align-items-end justify-content-end">
+                        <a style="color: #412885" href="#" class="send-modal-btn"><i
+                                class="fas fa-paper-plane"></i></a>
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="">
+                <div style="background-color: #E9ECEF" class="mb-4">
+                    <ul class="list-group">
+                        <li class="list-group-item disabled">
+                            {% if object.id %}
+                                {{ object.created |date:'Y-m-d H:i' }}</li>
+                            {% else %}
+                                {{ date |date:'Y-m-d H:i' }}
+
+                            {% endif %}
+
+
+                        <li class="list-group-item">Name : {{ patient.first_name }} {{ patient.first_name }} </li>
+                        <li class="list-group-item">Age : {{ patient.age }} </li>
+                        <li class="list-group-item">Blood group : {{ patient.blood_group }} </li>
+                    </ul>
+
+
+                </div>
+
+                <div class="border container-fluid mb-4">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="clinical_book" value="{{ book_id }}">
+                        <div class="mt-3 row">
+                            <div class="ml-4 col">
+                                Diagnosis
+                            </div>
+                            <div class="col d-flex align-items-end justify-content-end">
+                                <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i
+                                        class="fas fa-save"></i></a>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            {{ form.diagnosis |add_class:"form-control " |add_error_class:"is-invalid" }}
+                            {% for error in form.diagnosis.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+
+                        </div>
+                    </form>
+
+                </div>
+
+                {% if object.id %}
+                    <div class="border container-fluid mb-4 ">
+                        <div class="mt-3 row">
+                            <div class="ml-4 col">
+                                Lab Report
+                            </div>
+                            <div class="col d-flex align-items-end justify-content-end">
+                                <a style="color: #412885" href="#" class="lab-report-modal-btn"><i
+                                        class="fas fa-plus"></i></a>
+                            </div>
+
+
+                        </div>
+                        <ul class=" ml-4 list-group">
+                            {% if object.labs %}
+                                {% for lab in object.labs %}
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ lab.name }}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <span class="badge badge-primary badge-pill">{{ lab.status }}</span>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a class=" delete-btn text-black" href="#"><i
+                                                        class=" text-black far fa-trash-alt m-1 lab-delete-modal-btn"
+                                                        data-id="{{ lab.id }}"></i> </a>
+                                            </div>
+                                        </div>
+
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if object.id %}
+                    <div class="border container-fluid mb-4">
+                        <div class="mt-3  mb-2 row">
+                            <div class="ml-4 col">
+                                Prescription
+                            </div>
+                            <div class="col d-flex align-items-end justify-content-end">
+                                <a style="color: #412885" href="#" class="diagnosis-model-btn"><i
+                                        class="fas fa-plus"></i></a>
+                            </div>
+                        </div>
+                        {% if object.prescriptions %}
+
+                            <table class="  table table-sm ">
+                                <thead>
+                                <tr>
+
+                                    <th scope="col" style="display: none">Id</th>
+                                    <th scope="col">Doug name</th>
+                                    <th scope="col">Dose</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Duration</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for prescription in object.prescriptions %}
+
+                                    <tr>
+                                        <td style="display: none">{{ prescription.id }}</td>
+                                        <td>{{ prescription.doug_name }}</td>
+                                        <td>{{ prescription.doug_name }}</td>
+                                        <td>{{ prescription.dose }}</td>
+                                        <td>{{ prescription.time }}</td>
+                                        <td>{{ prescription.duration }} {{ prescription.duration_text }}</td>
+
+                                        <td>
+                                            <a class=" delete-btn text-black" href="#"><i
+                                                    class=" text-black far fa-trash-alt m-1 prescription-delete-model-btn"></i> </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+
+                    </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+
+{% block model %}
+    {% include 'doctor/lab-report-model.html' %}
+    {% include 'doctor/prescription-model.html' %}
+    {% include 'doctor/send-data-model.html' %}
+    {% include 'doctor/lab-report-delete-model.html' %}
+    {% include 'doctor/prescription-delete-model.html' %}
+{% endblock %}

@@ -21,7 +21,13 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('web.urls')),
-    path('demo/', include('demo.urls'))
+    path('demo/', include('demo.urls')),
+    path('pms_allowances/',include('pms_allowances.urls')),     #mapping allowance moduel urls
+    path('pms_deductions/',include('pms_deductions.urls'))  ,    #mapping deduction model urls
+    path('ams_client_leave_request/',include('ams_client_leave_request.urls')),
+    path('attendance/',include('attendance.urls')),
+    path('attendance_tracker/',include('attendance_tracker.urls')),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

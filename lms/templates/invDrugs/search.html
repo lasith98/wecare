@@ -1,0 +1,22 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+{{ object_list}}
+{% if object_list%}
+
+    {% for object in object_list %}
+        {{ object.id }}
+        {{ object.code }}
+        {{ object.quantity }}
+        {% endfor %}
+    {% else %}
+        <p>No found</p>
+
+{% endif %}
+{% endblock %}
+
+
+{% block model %}
+
+{% endblock %}

@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'demo',
+    'ams_client_leave_request', #client leave request handling app
+    'pms_allowances',           #company allowance table
+    'pms_deductions',           #company deduction table
+    'attendance',
+    'attendance_tracker',
 
 ]
 
@@ -51,7 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'pms.urls'
+ROOT_URLCONF = 'apms.urls'
 
 TEMPLATES = [
     {
@@ -65,12 +70,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'pms.wsgi.application'
+WSGI_APPLICATION = 'apms.wsgi.application'
 
 
 # Database

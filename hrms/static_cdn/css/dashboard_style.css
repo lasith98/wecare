@@ -16,11 +16,13 @@ body{
 }
 
 .wrapper .sidebar{
-  width: 200px;
+  width: 250px;
   height: 100%;
   background: #412885;
   /*padding: 40px 0px;*/
   position: fixed;
+  z-index: 1500!important;
+  overflow-y: auto;
 }
 
 .wrapper .sidebar img{
@@ -59,7 +61,7 @@ body{
 
 .wrapper .main_content{
   width: 100%;
-  margin-left: 200px;
+  margin-left: 250px;
   margin-top: 20px;
 }
 

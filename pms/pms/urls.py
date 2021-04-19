@@ -21,7 +21,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('web.urls')),
-    path('demo/', include('demo.urls'))
+    path('clinical/', include('clinical.urls')),
+    path('patient/', include('patient.urls')),
+    path('export/', include('export.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,11 @@
+{% load widget_tweaks %}
+
+
+<div class="form-group">
+    <div id="{{ field.id_for_label }}" class="form-text">{{ field.label }}</div>
+    {{ field |add_class:" selectpicker form-control"  |add_error_class:"is-invalid" | append_attr:"data-width:100%" |append_attr:'data-live-search:true'}}
+    {% for error in field.errors %}
+        <div class="invalid-feedback">{{ error }}</div>
+    {% endfor %}
+
+</div>

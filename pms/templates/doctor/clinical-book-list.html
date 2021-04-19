@@ -1,0 +1,87 @@
+{% extends 'layout/doctor-layout.html' %}
+{% block content %}
+
+
+    <div class="card">
+
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <a style="color: #412885" href="{% url 'clinical:doctor-create' %}"><i class="fas fa-plus"></i></a>
+                </div>
+
+                <div class="col  d-flex align-items-end justify-content-end">
+                    <form action="" method="get">
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Search by  patient id " name="query">
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Book name</th>
+                    <th scope="col">Patient id</th>
+                    <th scope="col">Patient name</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                {% for object in  object_list %}
+                    <tr>
+                        <td>{{ object.id }}</td>
+                        <td>{{ object.created |date:'Y-m-d H:i' }}</td>
+                        <td>{{ object.name }}</td>
+                        <td>{{ object.patient.id }}</td>
+                        <td>{{ object.patient.first_name }} {{ object.patient.last_name }}</td>
+                        <td>
+                            <a href="{% url 'clinical:doctor-detail' object.id %}" class="text-dark"
+                               style="padding: 0 0 0 0"> <i class="fas fa-eye fa-lg"></i></a>
+                        </td>
+
+                        <td>
+                            <div class="btn-group btn-group " style="margin: 0">
+                                <a href="{% url 'clinical:doctor-update' object.id %}" type="button"
+                                   class="btn  edit-btn" style="padding: 0 0 0 0"><i
+                                        class="fas fa-edit fa-lg"></i></a>
+                                <button type="button" class="btn dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown" aria-expanded="false"
+                                        style="padding: 0 0 0 20px;"></button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item delete-btn" href="#"><i
+                                            class="far fa-trash-alt m-1"></i> Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+
+
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
+
+{% block model %}
+    {% include 'common/delete-model.html' with delete_link=delete_url %}
+{% endblock %}

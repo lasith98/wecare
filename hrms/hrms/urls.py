@@ -17,11 +17,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from employee_management_system import views as empv
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('web.urls')),
-    path('demo/', include('demo.urls'))
+    path('hrms/' , empv.dashboard), #hrms dashboard url to link
+    path('ems/' , include('employee_management_system.urls')),
+    path('rms/' , include('room_management_system.urls')),
+    path('sms/' , include('shift_management_system.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

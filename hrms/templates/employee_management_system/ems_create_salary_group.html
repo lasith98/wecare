@@ -1,0 +1,49 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Create Salary Group EMS
+{% endblock title %}
+
+{% block content %}
+    <!--message window-->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <!--message window-->
+
+     <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Create New Salary Group</h5>
+                <hr>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <fieldset><!--specific info-->
+                        <legend>Basic Info About Salary Group</legend>
+                        <div class="container pl-5 pr-5 enroll_form_padding" >
+                            {{ s_group | crispy}}
+                        </div>
+
+                        <div class="mt-5 enroll_form_button_pannel">
+
+                            <div>
+                                <button type="submit" class="btn btn-outline-success">Create Salary Group</button>
+                                <button type="reset" class="btn btn-outline-danger">Reset Form</button>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+                </form>
+            </div>
+     </div>
+
+{% endblock %}
