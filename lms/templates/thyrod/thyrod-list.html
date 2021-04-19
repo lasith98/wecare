@@ -1,0 +1,132 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+
+
+<div class="card">
+
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-6">
+                <a style="color: #412885" href="{% url 'thyrod:thyrod-create' %}"><i
+                        class="fas fa-plus"></i></a>
+            </div>
+            <div class="col-md-4">
+                <form action="{% url 'thyrod:thyrod-search' %}" method="GET" id="form1">
+                    <input type="text" placeholder="Search ID" name="search" id="search" class="form-control col-xs-3">
+                </form>
+            </div>
+            <div class="col-md-2 ">
+                <button value="Submit" id="btn1" onclick="SearchVal();" class="btn btn-link"><i
+                        class="fas fa-search "></i></button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card-body ">
+        {% for object in object_list %}
+        <div class="card bg-light mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <p class="text-dark">
+                        <h6><b>Id = {{ object.id }}</b></h6>
+                        </p>
+                        <p class="text-dark">
+                        <h6><b>Age = {{ object.age }}</b></h6>
+                        </p>
+                        <p class="text-dark">
+                        <h6><b>Date = {{ object.date }}</b></h6>
+                        </p>
+                        <div class="float-right">
+                            <a href="{% url 'thyrod:thyrod-update' object.id %}" role="button"
+                                class="btn  edit-btn" style="padding: 0 0 0 0"><i class="fas fa-edit fa-lg"></i></a>
+
+                            <button type="button" class="btn dropdown-toggle dropdown-toggle-split"
+                                data-toggle="dropdown" aria-expanded="false" style="padding: 0 0 0 10px;"></button>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item delete-btn" href="#">
+
+                                        <form action="{% url 'thyrod:thyrod-delete' object.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button class="btn btn-sm" type="submit"
+                                                onclick="return confirm('Are you sure you want to delete?')"><i
+                                                    class="far fa-trash-alt m-1"></i> Delete
+                                            </button>
+                                        </form>
+
+
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Test</th>
+                            <th scope="col">Result</th>
+                            <th scope="col">Normal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{ object.tstBox1 }}</th>
+                            <th scope="row">{{ object.resultBox1 }}</th>
+                            <th scope="row">{{ object.normalBox1 }}</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ object.tstBox2 }}</th>
+                            <th scope="row">{{ object.resultBox2 }}</th>
+                            <th scope="row">{{ object.normalBox2 }}</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ object.tstBox3 }}</th>
+                            <th scope="row">{{ object.resultBox3 }}</th>
+                            <th scope="row">{{ object.normalBox3 }}</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ object.tstBox4 }}</th>
+                            <th scope="row">{{ object.resultBox4 }}</th>
+                            <th scope="row">{{ object.normalBox4 }}</th>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+
+</div>
+<script>
+    function SearchVal() {
+            document.getElementById("form1").submit();
+    }
+</script>
+
+
+
+
+
+{% endblock %}
+
+
+{% block model %}
+
+{% endblock %}
