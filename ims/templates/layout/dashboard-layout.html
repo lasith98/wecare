@@ -10,11 +10,12 @@
             <img src="{% static 'img/tokoIG.jpg' %}" alt="logo" width="200" height="70" style="margin-bottom: 10px">
             <ul>
                 <li><a href=""><i class="fas fa-braille"></i>Dashboard</a></li>
-                <li><a href="{% url 'demo:demo-list' %}"><i class="fas fa-clone"></i>Demo</a></li>
-                <li><a href=""><i class="fas fa-dollar-sign"></i>Revenue</a></li>
-                <li><a href=""><i class="fas fa-file-invoice-dollar"></i>Expenses</a></li>
-                <li><a href=""><i class="fas fa-users"></i>Team</a></li>
-                <li><a href=""><i class="fas fa-running"></i>Target</a></li>
+                <li><a href="{% url 'items:items-list' %}"><i class="fas fa-prescription-bottle-alt"></i>Items</a></li>
+                <li><a href="{% url 'suppliers:suppliers-list' %}"><i class="fas fa-user-friends"></i>Suppliers</a></li>
+                <li><a href="{% url 'purchases:purchases-list' %}"><i class="fas fa-cash-register"></i>Purchase</a></li>
+                <li><a href="{% url 'newSales:newSales-list' %}"><i class="fas fa-clipboard-check"></i>Sales</a></li>
+                <li><a href="{% url 'stocks:stocks-list' %}"><i class="fas fa-book-reader"></i>Stock</a></li>
+                <li><a href="{% url 'newOrder:newOrder-list' %}"><i class="fas fa-clipboard-list"></i>Orders</a></li>
                 <li><a href=""><i class="fas fa-sign-out-alt"></i>Log out</a></li>
             </ul>
 

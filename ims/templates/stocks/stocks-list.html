@@ -1,0 +1,55 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+
+
+    <div class="card">
+         
+
+        <div class="card-body">
+
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                {% for object in  object_list %}
+                    <tr>
+                        <th scope="row">{{ object.id }}</th>
+                        <th scope="row">{{ object.code }}</th>
+                        <th scope="row">{{ object.description }}</th>
+                        <th scope="row">{{ object.purchase }}</th>
+                        <th scope="row">{{ object.sRStatus }}</th>
+                        <td>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block model %}
+
+{% endblock %}
