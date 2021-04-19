@@ -9,12 +9,10 @@
         <div class="sidebar">
             <img src="{% static 'img/tokoIG.jpg' %}" alt="logo" width="200" height="70" style="margin-bottom: 10px">
             <ul>
-                <li><a href=""><i class="fas fa-braille"></i>Dashboard</a></li>
-                <li><a href="{% url 'demo:demo-list' %}"><i class="fas fa-clone"></i>Demo</a></li>
-                <li><a href=""><i class="fas fa-dollar-sign"></i>Revenue</a></li>
-                <li><a href=""><i class="fas fa-file-invoice-dollar"></i>Expenses</a></li>
-                <li><a href=""><i class="fas fa-users"></i>Team</a></li>
-                <li><a href=""><i class="fas fa-running"></i>Target</a></li>
+                <li><a href="{% url 'billing:billing-list' %}"><i class="fas fa-braille"></i>Billing</a></li>
+                <li><a href="{% url 'dashboard:patient_reg' %}"><i class="fas fa-users"></i>Reception</a></li>
+                <li><a href=""><i class="fas fa-running"></i>Report</a></li>
+                <li><a href="{% url 'guest:guest-list' %}"><i class="fas fa-running"></i>Guest</a></li>
                 <li><a href=""><i class="fas fa-sign-out-alt"></i>Log out</a></li>
             </ul>
 
