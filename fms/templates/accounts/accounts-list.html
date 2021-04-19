@@ -1,0 +1,109 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+
+
+    <div class="card">
+
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <a style="color: #412885" href="{% url 'accounts:accounts-create' %}"><i class="fas fa-plus"></i></a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <!-- LIST VIEW -->
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">Account No</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Account name</th>
+                    <th scope="col">Bank name</th>
+                    <th scope="col">Branch name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Street address 1</th>
+                    <th scope="col">Street address 2</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+
+
+                {% for object in  object_list %}
+                    <tr>
+                        <th scope="row">{{ object.acc_no }}</th>
+                        <th scope="row">{{ object.date }}</th>
+                        <th scope="row">{{ object.acc_name }}</th>
+                        <th scope="row">{{ object.bank_name }}</th>
+                        <th scope="row">{{ object.branch_name }}</th>
+                        <th scope="row">{{ object.phone }}</th>
+                        <th scope="row">{{ object.street_a1 }}</th>
+                        <th scope="row">{{ object.street_a2 }}</th>
+                        <th scope="row">{{ object.city }}</th>
+                        <th scope="row">{{ object.state }}</th>
+
+                        <td>
+                            <!-- UPDATE -->
+                            <div>
+                                <a href="{% url 'accounts:accounts-update' object.id %}" role="button"
+                                   class="btn  edit-btn" style="padding: 0 0 0 0"><i
+                                        class="fas fa-edit fa-lg"></i></a>
+
+                                <button type="button" class="btn dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown"
+                                        aria-expanded="false"
+                                        style="padding: 0 0 0 10px;"></button>
+
+                                        <!-- DELETE -->
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item delete-btn" href="#">
+
+                                            <form action="{% url 'accounts:accounts-delete' object.id %}" method="post">
+                                                {% csrf_token %}
+                                                <button class="btn btn-sm" type="submit"
+                                                        onclick="return confirm('Do you want to delete this?')"><i
+                                                        class="far fa-trash-alt m-1"></i> Delete
+                                                </button>
+                                            </form>
+
+
+                                        </a>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+
+    </div>
+<!-- end card -->
+
+
+
+
+
+{% endblock %}
+
+
+{% block model %}
+
+{% endblock %}

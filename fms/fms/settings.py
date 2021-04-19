@@ -38,6 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'demo',
+    'reports',
+    'transactions',
+    'balanceSheet',
+    'cashFlowReport',
+    'vouchers',
+    'accounts',
+    'dashboard',
+
 
 ]
 
@@ -51,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'pms.urls'
+ROOT_URLCONF = 'fms.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pms.wsgi.application'
+WSGI_APPLICATION = 'fms.wsgi.application'
 
 
 # Database

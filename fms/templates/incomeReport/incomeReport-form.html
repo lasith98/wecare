@@ -1,0 +1,74 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+<h4>Monthly Income Report</h4>
+
+    <form action="" method="post">
+       {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <a style="color: #412885" href="{% url 'monthlyIncomeReport:incomeReport-list' %}"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+                <!--Report ID -->
+                <div class="form-group">
+
+                    <input type="text" class="form-control" id="id" aria-describedby="id" placeholder="Report ID" name="mir_id" value="{{ object.id }}">
+                </div>
+
+                <!--pick the Date-->
+                <div class="form-group">
+
+                    <input type="datetime-local" class="form-control" id="date" aria-describedby="date" placeholder="Date" name="date" value="{{ object.date }}">
+                </div>
+
+                <!-- select Division-->
+                 <div class="form-group">
+
+                    <select class="form-select" aria-label="Default select example" id="division" name="division" value="{{ object.division }}">
+                        <option selected>Division</option>
+                        <option value="1">Pharmacy</option>
+                        <option value="2">Laboratory</option>
+                        
+                      </select>
+                    <!-- <input type="text" class="form-control" id="division" aria-describedby="division" placeholder="Division" name="division" value="{{ object.division }}"> -->
+                </div>
+
+
+              <!--Description-->
+              <div class="form-group">
+
+                     <input type="text" class="form-control" id="description" aria-describedby="description" placeholder="Description here" name="description" value="{{ object.description }}">
+                </div>
+
+                <!--Amount-->
+              <div class="form-group">
+
+                    <input type="text" class="form-control" id="amount" aria-describedby="amount" placeholder="Amount($)" name="amount" value="{{ object.total_amount }}">
+                </div>
+
+                <!-- submit button -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+
+            </div>
+
+        </div>
+    </form>
+
+
+
+
+{% endblock %}

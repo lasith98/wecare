@@ -21,7 +21,15 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('web.urls')),
-    path('demo/', include('demo.urls'))
+    path('demo/', include('demo.urls')),
+    path('transactions/', include('transactions.urls')),
+    path('reports/', include('reports.urls')),
+    path('balanceSheet/', include('balanceSheet.urls')),
+    path('cashFlowReport/', include('cashFlowReport.urls')),
+    path('vouchers/', include('vouchers.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('dashboard/', include('dashboard.urls')),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

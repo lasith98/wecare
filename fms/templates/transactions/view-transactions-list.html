@@ -1,0 +1,97 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+
+
+    <div class="card">
+
+        <div class="card-header">
+            <div class="row">
+                <div class="col">
+                    <a style="color: #412885" href="{% url 'transactions:transactions-create' %}"><i class="fas fa-plus"></i></a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+
+            <!-- LIST VIEW -->
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Account</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Total</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+
+                {% for object in  object_list %}
+                    <tr>
+                        <th scope="row">{{ object.id }}</th>
+                        <th scope="row">{{ object.date }}</th>
+                        <th scope="row">{{ object.account_no }}</th>
+                        <th scope="row">{{ object.description }}</th>
+                        <th scope="row">{{ object.total_amount }}</th>
+                        <td>
+                            <div>
+                                <a href="{% url 'transactions:transactions-update' object.id %}" role="button"
+                                   class="btn  edit-btn" style="..."><i
+                                        class="fas fa-edit fa-lg"></i></a>
+
+                                <button type="button" class="btn dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown"
+                                        aria-expanded="false"
+                                        style="padding: 0 0 0 10px;"></button>
+
+                                        <!-- DELETE -->
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item delete-btn" href="#">
+
+                                            <form action="{% url 'transactions:transactions-delete' object.id %}" method="post">
+                                                {% csrf_token %}
+
+
+                                                <button class="btn btn-sm" type="submit"
+                                                        onclick="return confirm('Do you want to delete this?')"><i
+                                                        class="far fa-trash-alt m-1"></i> Delete
+                                                </button>
+                                            </form>
+
+
+                                        </a>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block model %}
+
+{% endblock %}

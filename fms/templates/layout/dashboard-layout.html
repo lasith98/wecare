@@ -1,33 +1,78 @@
 {% extends 'layout/base-layout.html' %}
 {% load static %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/dashboard_style.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard_style.css' %}">
 {% endblock %}
 
 {% block body %}
-    <div class="wrapper">
-        <div class="sidebar">
-            <img src="{% static 'img/tokoIG.jpg' %}" alt="logo" width="200" height="70" style="margin-bottom: 10px">
-            <ul>
-                <li><a href=""><i class="fas fa-braille"></i>Dashboard</a></li>
-                <li><a href="{% url 'demo:demo-list' %}"><i class="fas fa-clone"></i>Demo</a></li>
-                <li><a href=""><i class="fas fa-dollar-sign"></i>Revenue</a></li>
-                <li><a href=""><i class="fas fa-file-invoice-dollar"></i>Expenses</a></li>
-                <li><a href=""><i class="fas fa-users"></i>Team</a></li>
-                <li><a href=""><i class="fas fa-running"></i>Target</a></li>
-                <li><a href=""><i class="fas fa-sign-out-alt"></i>Log out</a></li>
-            </ul>
+<div class="wrapper">
+    <div class="sidebar">
+        <!-- LOGO-->
+        <img src="{% static 'img/tokoIG.jpg' %}" alt="logo" width="200" height="70" style="margin-bottom: 10px">
+        <ul>
+            <li><a href=""><i class="fas fa-chart-line"></i>Dashboard</a></li>
+            <li><a href="{% url 'transactions:transactions-list'%}"><i class="fas fa-hand-holding-usd"></i>Transactions</a></li>
+            <li><a href="{% url 'vouchers:vouchers-list'%}"><i class="fas fa-file-invoice-dollar"></i>Vouchers</a></li>
+            <li><a href="{% url 'accounts:accounts-list'%}"><i class="fas fa-comments-dollar"></i>Accounts</a></li>
 
-        </div>
-        <div class="main_content">
-            <div class="info">
-                <div class="container">
+            <!--    --------------------------    -->
+            <div class="panel-group">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                 <li class="panel-title" style="padding-left: 15px;">
+                    <a data-toggle="collapse" href="#collapse1" style="color: #bdb8d7"><i class="fas fa-file-alt"></i> Reports</a>
+                  </li>
 
-                    {% block content %} {% endblock %}
+
                 </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                  <div class="panel-body"><li><a href="">Income report</a></li></div>
+                    <div class="panel-body"> <li><a href="{% url 'cashFlowReport:cashFlow-list'%}">Cash flow report</a></li></div>
+                  <div class="panel-footer"><li><a href="{% url 'balanceSheet:balanceSheet-list'%}">Balance sheet</a></li></div>
+                </div>
+              </div>
+            </div>
+
+<!--
+            <li><a href=""><i class="fas fa-file-alt"></i>Income report</a></li>
+            <li><a href="{% url 'balanceSheet:balanceSheet-list'%}"><i class="fas fa-file-alt"></i>Balance sheet</a></li>
+            <li><a href="{% url 'cashFlowReport:cashFlow-list'%}"><i class="fas fa-file-alt"></i>Cash flow report</a></li>  -->
+
+            <br>
+
+            <li><a href=""><i class="fas fa-sign-out-alt"></i>Log out</a></li>
+        </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="main_content">
+        <div class="info">
+            <div class="container">
+
+                {% block content %} {% endblock %}
             </div>
         </div>
     </div>
+</div>
 
 
 {% endblock %}

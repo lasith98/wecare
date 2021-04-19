@@ -1,0 +1,82 @@
+{% extends 'layout/dashboard-layout.html' %}
+
+{% block content %}
+
+<h4>Cash Flow Report</h4>
+
+    <form action="" method="post">
+       {% csrf_token %}
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <a style="color: #412885" href="{% url 'cashFlowReport:cashFlow-list' %}"><i class="fas fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-end justify-content-end">
+                            <a style="color: #412885" href="#" onclick="$(this).closest('form').submit();"><i class="fas fa-save"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+                       {{form.as_p}}
+
+        </div>
+    </form>
+<!--                &lt;!&ndash;Report ID &ndash;&gt;-->
+<!--                <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="id" aria-describedby="id" placeholder="Report ID" name="cfr_id" value="{{ object.id }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash;Pick the Date&ndash;&gt;-->
+<!--                <div class="form-group">-->
+
+<!--                    <input type="datetime-local" class="form-control" id="date" aria-describedby="date" placeholder="Date" name="date" value="{{ object.date }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash;Inflow description&ndash;&gt;-->
+<!--                 <div class="form-group">-->
+<!--                    <div class="form-floating">-->
+<!--                        <textarea class="form-control" placeholder="Inflow Description  here" id="inflow_description" name="inflow_description" value="{{ object.inflow_description }}"></textarea>-->
+<!--                        -->
+<!--                      </div>-->
+<!--                    &lt;!&ndash; <input type="text" class="form-control" id="inflow_description" aria-describedby="inflow_description" placeholder="Inflow Description here" name="inflow_description" value="{{ object.inflow_description }}"> &ndash;&gt;-->
+<!--                </div>-->
+
+
+<!--              &lt;!&ndash;Inflow amount&ndash;&gt;-->
+<!--              <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="inflow_amount" aria-describedby="inflow_amount" placeholder="Inflow Amount($)" name="inflow_amount" value="{{ object.inflow_amount }}">-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash;Outflow description&ndash;&gt;-->
+<!--              <div class="form-group">-->
+<!--                <div class="form-floating">-->
+<!--                    <textarea class="form-control" placeholder="Outflow Description  here" id="outflow_description" name="outflow_description" value="{{ object.outflow_description }}"></textarea>-->
+<!--                    -->
+<!--                  </div>-->
+<!--                    &lt;!&ndash; <input type="text" class="form-control" id="outflow_description" aria-describedby="outflow_description" placeholder="Outflow Description here" name="outflow_description" value="{{ object.outflow_description }}"> &ndash;&gt;-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash;Outflow amount&ndash;&gt;-->
+<!--                 <div class="form-group">-->
+
+<!--                    <input type="text" class="form-control" id="outflow_amount" aria-describedby="outflow_amount" placeholder="Inflow Amount($)" name="outflow_amount" value="{{ object.outflow_amount }}">-->
+<!--                </div>-->
+
+
+
+
+<!--            </div>-->
+
+
+
+
+
+
+{% endblock %}

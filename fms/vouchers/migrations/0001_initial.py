@@ -12,11 +12,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Demo',
+            name='Voucher',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=250)),
-                ('age', models.IntegerField()),
+                ('voucher_no', models.IntegerField()),
+                ('date', models.DateField()),
+                ('account_no', models.IntegerField()),
+                ('supplier_id', models.CharField(max_length=250)),
+                ('description', models.CharField(max_length=200)),
+                ('total_amount', models.FloatField()),
             ],
         ),
     ]
